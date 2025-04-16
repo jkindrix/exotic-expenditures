@@ -21,15 +21,25 @@
     <meta property="twitter:description" content="Join our social fund for extraordinary experiences and adventures we couldn't experience alone.">
     <meta property="twitter:image" content="https://exoticexpenditures.com/assets/og-image.jpg">
     
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#FF3366">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1A1A2E">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1A1A2E">
+    
     <!-- Preload critical assets -->
-    <link rel="preload" href="css/styles.css" as="style">
-    <link rel="preload" href="js/main.min.js" as="script">
+    <link rel="preload" href="css/bundle.min.css" as="style">
+    <link rel="preload" href="js/bundle.min.js" as="script">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/additional-styles.css">
-    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/visual-enhancements.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous" defer></script>
     
@@ -111,16 +121,26 @@
     
     <header id="home" role="banner">
         <div class="hero-slideshow">
-            <div class="hero-slide active" style="background-image: url('assets/images/adventure-1.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/adventure-2.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('assets/images/adventure-3.jpg');"></div>
+            <!-- Using gradient backgrounds as placeholders until real images are added -->
+            <div class="hero-slide active" style="background: linear-gradient(135deg, #3366ff 0%, #33ccff 100%);"></div>
+            <div class="hero-slide" style="background: linear-gradient(135deg, #ff3366 0%, #ff9966 100%);"></div>
+            <div class="hero-slide" style="background: linear-gradient(135deg, #06D6A0 0%, #33ccff 100%);"></div>
             <div class="hero-overlay"></div>
+            <!-- Added floating particles for visual interest -->
+            <div class="hero-particle" aria-hidden="true"></div>
+            <div class="hero-particle" aria-hidden="true"></div>
+            <div class="hero-particle" aria-hidden="true"></div>
+            <div class="hero-particle" aria-hidden="true"></div>
+            <div class="hero-particle" aria-hidden="true"></div>
         </div>
         <div class="hero-content">
-            <h1 class="animated-title">Exotic Expenditures</h1>
+            <h1 class="animated-title" data-text="Exotic Expenditures">Exotic Expenditures</h1>
             <p class="tagline">Adventures worth sharing</p>
             <div class="cta-container">
-                <a href="#about" class="cta-button" onclick="gtag('event', 'click', {'event_category': 'engagement', 'event_label': 'discover_more'})">Discover More</a>
+                <a href="#about" class="cta-button" onclick="gtag('event', 'click', {'event_category': 'engagement', 'event_label': 'discover_more'})">
+                    <span>Discover More</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
         <div class="hero-shapes" aria-hidden="true">
@@ -148,14 +168,17 @@
                 
                 <div class="stats-container">
                     <div class="stat-item fade-in">
+                        <div class="stat-icon"><i class="fas fa-mountain" aria-hidden="true"></i></div>
                         <div class="stat-value" data-value="12">0</div>
                         <div class="stat-label">Adventures Completed</div>
                     </div>
                     <div class="stat-item fade-in">
+                        <div class="stat-icon"><i class="fas fa-globe-americas" aria-hidden="true"></i></div>
                         <div class="stat-value" data-value="8">0</div>
                         <div class="stat-label">Countries Visited</div>
                     </div>
                     <div class="stat-item fade-in">
+                        <div class="stat-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
                         <div class="stat-value" data-value="24">0</div>
                         <div class="stat-label">Members & Friends</div>
                     </div>
@@ -212,46 +235,677 @@
         
         <section id="experiences" class="experiences section" aria-labelledby="experiences-heading">
             <div class="container">
-                <div class="section-heading">
+                <div class="section-heading fade-in">
                     <span class="section-icon" aria-hidden="true"><i class="fas fa-star"></i></span>
-                    <h2 id="experiences-heading">Our Experiences</h2>
+                    <h2 id="experiences-heading">Past Adventures</h2>
                 </div>
-                <div class="experience-content">
-                    <p class="text-center">Check back soon for our upcoming and past adventures!</p>
-                    <div class="placeholder-content" aria-hidden="true">
-                        <i class="fas fa-camera placeholder-icon"></i>
-                        <p>Experience content coming soon</p>
+                <div class="adventure-filters" role="tablist">
+                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" aria-controls="all-adventures">All</button>
+                    <button class="filter-btn" data-filter="travel" role="tab" aria-selected="false" aria-controls="travel-adventures">Travel</button>
+                    <button class="filter-btn" data-filter="experience" role="tab" aria-selected="false" aria-controls="experience-adventures">Experience</button>
+                    <button class="filter-btn" data-filter="food" role="tab" aria-selected="false" aria-controls="food-adventures">Food & Drink</button>
+                </div>
+                <div class="adventures-grid">
+                    <div class="adventure-item fade-in" data-category="travel">
+                        <div class="adventure-img">
+                            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Helicopter Mountain Camping">
+                            <div class="adventure-overlay">
+                                <span class="adventure-date">May 2024</span>
+                                <h3>Helicopter Mountain Camping</h3>
+                                <p>A weekend of luxury camping at 8,000 feet</p>
+                                <button class="view-details" data-adventure="helicopter-camping">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adventure-item fade-in" data-category="experience">
+                        <div class="adventure-img">
+                            <img src="https://images.unsplash.com/photo-1541417904950-b855846fe074?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Zero Gravity Flight">
+                            <div class="adventure-overlay">
+                                <span class="adventure-date">March 2024</span>
+                                <h3>Zero Gravity Flight</h3>
+                                <p>Experiencing weightlessness on a parabolic flight</p>
+                                <button class="view-details" data-adventure="zero-gravity">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adventure-item fade-in" data-category="food">
+                        <div class="adventure-img">
+                            <img src="https://images.unsplash.com/photo-1563599175592-c58dc214deff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Private Chef Experience">
+                            <div class="adventure-overlay">
+                                <span class="adventure-date">February 2024</span>
+                                <h3>Michelin Star Chef Dinner</h3>
+                                <p>An exclusive 8-course tasting menu with wine pairings</p>
+                                <button class="view-details" data-adventure="chef-dinner">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adventure-item fade-in" data-category="travel">
+                        <div class="adventure-img">
+                            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Private Island Getaway">
+                            <div class="adventure-overlay">
+                                <span class="adventure-date">December 2023</span>
+                                <h3>Private Island Getaway</h3>
+                                <p>A week of paradise on our own rented island</p>
+                                <button class="view-details" data-adventure="private-island">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adventure-item fade-in" data-category="experience">
+                        <div class="adventure-img">
+                            <img src="https://images.unsplash.com/photo-1672495630169-7c58f9471d8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Formula 1 Driving Experience">
+                            <div class="adventure-overlay">
+                                <span class="adventure-date">October 2023</span>
+                                <h3>Formula 1 Driving Experience</h3>
+                                <p>High-speed laps in professional race cars</p>
+                                <button class="view-details" data-adventure="formula-one">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adventure-item fade-in" data-category="food">
+                        <div class="adventure-img">
+                            <img src="https://images.unsplash.com/photo-1615887588189-bacee4f8a033?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wine Tasting Tour">
+                            <div class="adventure-overlay">
+                                <span class="adventure-date">September 2023</span>
+                                <h3>Private Winery Tour</h3>
+                                <p>Exclusive access to France's finest vineyards</p>
+                                <button class="view-details" data-adventure="wine-tour">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lightbox for adventure details -->
+                <div class="adventure-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
+                    <div class="lightbox-content">
+                        <button class="close-lightbox" aria-label="Close details">&times;</button>
+                        <div class="lightbox-details">
+                            <!-- Content will be added dynamically -->
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section id="gallery" class="gallery section" aria-labelledby="gallery-heading">
+        <section id="upcoming-events" class="upcoming-events section" aria-labelledby="events-heading">
             <div class="container">
-                <div class="section-heading">
-                    <span class="section-icon" aria-hidden="true"><i class="fas fa-images"></i></span>
-                    <h2 id="gallery-heading">Gallery</h2>
+                <div class="section-heading fade-in">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-calendar-alt"></i></span>
+                    <h2 id="events-heading">Upcoming Events</h2>
                 </div>
-                <div class="gallery-content">
-                    <p class="text-center">Our memories gallery is coming soon!</p>
-                    <div class="placeholder-content" aria-hidden="true">
-                        <i class="fas fa-image placeholder-icon"></i>
-                        <p>Gallery content coming soon</p>
+                
+                <div class="next-event-highlight fade-in">
+                    <div class="countdown-container">
+                        <h3>Next Adventure In:</h3>
+                        <div class="countdown" role="timer" aria-label="Countdown to next adventure">
+                            <div class="countdown-item">
+                                <span id="countdown-days" aria-label="days">00</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="countdown-hours" aria-label="hours">00</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="countdown-minutes" aria-label="minutes">00</span>
+                                <span class="countdown-label">Minutes</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="countdown-seconds" aria-label="seconds">00</span>
+                                <span class="countdown-label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="events-grid">
+                    <div class="event-card slide-in-left">
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hot Air Balloon Safari">
+                            <span class="event-badge">Next Up!</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Hot Air Balloon Safari</h3>
+                            <ul class="event-info">
+                                <li><i class="fas fa-calendar" aria-hidden="true"></i> July 15, 2025</li>
+                                <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Serengeti National Park, Tanzania</li>
+                                <li><i class="fas fa-ticket-alt" aria-hidden="true"></i> $3,500 per person</li>
+                                <li><i class="fas fa-users" aria-hidden="true"></i> <span class="availability">3 spots left</span></li>
+                            </ul>
+                            <p class="event-description">Experience the wildlife of Africa from a breathtaking perspective in our luxury hot air balloon safari. Includes champagne breakfast and premium wildlife viewing.</p>
+                            <button class="rsvp-button" data-event="balloon-safari">RSVP Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card fade-in">
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1601024445121-e5b82f020549?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Underwater Restaurant">
+                            <span class="event-badge">Selling Fast</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Underwater Restaurant Experience</h3>
+                            <ul class="event-info">
+                                <li><i class="fas fa-calendar" aria-hidden="true"></i> September 5, 2025</li>
+                                <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Maldives</li>
+                                <li><i class="fas fa-ticket-alt" aria-hidden="true"></i> $2,800 per person</li>
+                                <li><i class="fas fa-users" aria-hidden="true"></i> <span class="availability">5 spots left</span></li>
+                            </ul>
+                            <p class="event-description">Dine 16 feet below sea level in an all-glass underwater restaurant surrounded by vibrant coral reef and marine life. A once-in-a-lifetime culinary adventure.</p>
+                            <button class="rsvp-button" data-event="underwater-restaurant">RSVP Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card slide-in-right">
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1496497243327-9dccd845c35f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Northern Lights">
+                            <span class="event-badge">New</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Glass Igloo Northern Lights Tour</h3>
+                            <ul class="event-info">
+                                <li><i class="fas fa-calendar" aria-hidden="true"></i> November 20, 2025</li>
+                                <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Finnish Lapland</li>
+                                <li><i class="fas fa-ticket-alt" aria-hidden="true"></i> $4,200 per person</li>
+                                <li><i class="fas fa-users" aria-hidden="true"></i> <span class="availability">8 spots left</span></li>
+                            </ul>
+                            <p class="event-description">Sleep under the dancing northern lights in our luxury glass igloos. Includes husky sledding, ice fishing, and a traditional Finnish sauna experience.</p>
+                            <button class="rsvp-button" data-event="northern-lights">RSVP Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RSVP Form Modal -->
+                <div class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-heading" aria-hidden="true">
+                    <div class="rsvp-modal-content">
+                        <button class="close-rsvp" aria-label="Close RSVP form">&times;</button>
+                        <h3 id="rsvp-heading">Reserve Your Spot</h3>
+                        <form id="rsvp-form">
+                            <input type="hidden" id="event-id" name="event-id">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="guests">Number of Guests</label>
+                                <select id="guests" name="guests">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="special-requests">Special Requests</label>
+                                <textarea id="special-requests" name="special-requests"></textarea>
+                                <span class="error-message" aria-live="polite"></span>
+                            </div>
+                            <button type="submit" class="submit-rsvp">Confirm Reservation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials" class="testimonials section" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <div class="section-heading fade-in">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-quote-right"></i></span>
+                    <h2 id="testimonials-heading">Member Testimonials</h2>
+                </div>
+                
+                <div class="testimonial-slider" role="region" aria-label="Testimonial slider">
+                    <div class="testimonial-track">
+                        <div class="testimonial-slide" role="tabpanel" id="testimonial-1" aria-labelledby="testimonial-tab-1">
+                            <div class="testimonial-content">
+                                <div class="testimonial-image">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <blockquote>
+                                        <p>"I never thought I'd fly in a zero-gravity plane! The experiences we've had through Exotic Expenditures have truly been life-changing. Worth every penny of my contribution."</p>
+                                    </blockquote>
+                                    <div class="testimonial-author">
+                                        <h4>Sarah Johnson</h4>
+                                        <p>Member since 2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-slide" role="tabpanel" id="testimonial-2" aria-labelledby="testimonial-tab-2">
+                            <div class="testimonial-content">
+                                <div class="testimonial-image">
+                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David Chen">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <blockquote>
+                                        <p>"The private island getaway was something I could never have afforded on my own. But with our collective, we lived like celebrities for a week. These are memories I'll cherish forever."</p>
+                                    </blockquote>
+                                    <div class="testimonial-author">
+                                        <h4>David Chen</h4>
+                                        <p>Member since 2021</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-slide" role="tabpanel" id="testimonial-3" aria-labelledby="testimonial-tab-3">
+                            <div class="testimonial-content">
+                                <div class="testimonial-image">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amara Okafor">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <blockquote>
+                                        <p>"What I love most about our expenditures collective is the democratic way we choose adventures. Everyone gets a say, and we've experienced things I wouldn't have even thought to try on my own."</p>
+                                    </blockquote>
+                                    <div class="testimonial-author">
+                                        <h4>Amara Okafor</h4>
+                                        <p>Member since 2023</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-slide" role="tabpanel" id="testimonial-4" aria-labelledby="testimonial-tab-4">
+                            <div class="testimonial-content">
+                                <div class="testimonial-image">
+                                    <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="James Wilson">
+                                </div>
+                                <div class="testimonial-quote">
+                                    <blockquote>
+                                        <p>"The Formula 1 driving experience was a dream come true for a racing fan like me. The way we pool our resources makes these premium experiences actually attainable."</p>
+                                    </blockquote>
+                                    <div class="testimonial-author">
+                                        <h4>James Wilson</h4>
+                                        <p>Member since 2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-controls" role="tablist">
+                        <button class="testimonial-prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                        <div class="testimonial-dots">
+                            <button class="testimonial-dot active" data-index="0" role="tab" id="testimonial-tab-1" aria-selected="true" aria-controls="testimonial-1"><span class="sr-only">Testimonial 1</span></button>
+                            <button class="testimonial-dot" data-index="1" role="tab" id="testimonial-tab-2" aria-selected="false" aria-controls="testimonial-2"><span class="sr-only">Testimonial 2</span></button>
+                            <button class="testimonial-dot" data-index="2" role="tab" id="testimonial-tab-3" aria-selected="false" aria-controls="testimonial-3"><span class="sr-only">Testimonial 3</span></button>
+                            <button class="testimonial-dot" data-index="3" role="tab" id="testimonial-tab-4" aria-selected="false" aria-controls="testimonial-4"><span class="sr-only">Testimonial 4</span></button>
+                        </div>
+                        <button class="testimonial-next" aria-label="Next testimonial"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="join-us section" aria-labelledby="contact-heading">
+        <section id="calculators" class="calculators section" aria-labelledby="calculators-heading">
             <div class="container">
-                <div class="section-heading">
+                <div class="section-heading fade-in">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span>
+                    <h2 id="calculators-heading">Adventure Planning</h2>
+                </div>
+                
+                <div class="calculator-tabs">
+                    <div class="tab-buttons" role="tablist">
+                        <button id="expense-tab" class="tab-button active" role="tab" aria-selected="true" aria-controls="expense-content">
+                            <i class="fas fa-coins" aria-hidden="true"></i> Cost Savings
+                        </button>
+                        <button id="map-tab" class="tab-button" role="tab" aria-selected="false" aria-controls="map-content">
+                            <i class="fas fa-map-marked-alt" aria-hidden="true"></i> Adventure Map
+                        </button>
+                        <button id="allocation-tab" class="tab-button" role="tab" aria-selected="false" aria-controls="allocation-content">
+                            <i class="fas fa-chart-pie" aria-hidden="true"></i> Fund Allocation
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="expense-content" class="tab-pane active" role="tabpanel" aria-labelledby="expense-tab">
+                            <div class="expense-calculator">
+                                <div class="calculator-intro">
+                                    <h3>Group Savings Calculator</h3>
+                                    <p>See how our collective fund model helps you experience luxury adventures at a fraction of the cost.</p>
+                                </div>
+                                
+                                <div class="calculator-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="experience-type">Adventure Type</label>
+                                            <select id="experience-type">
+                                                <option value="helicopter">Helicopter Mountain Camping</option>
+                                                <option value="zerog">Zero Gravity Flight</option>
+                                                <option value="michelin">Michelin Star Experience</option>
+                                                <option value="island">Private Island Getaway</option>
+                                                <option value="custom">Custom Adventure</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="group-size">Group Size</label>
+                                            <input type="range" id="group-size" min="1" max="20" value="8" 
+                                                  oninput="this.nextElementSibling.value = this.value">
+                                            <output>8</output>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group" id="custom-cost-group" style="display: none;">
+                                            <label for="custom-cost">Adventure Cost ($)</label>
+                                            <input type="number" id="custom-cost" min="100" value="5000">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contribution">Monthly Contribution ($)</label>
+                                            <input type="number" id="contribution" min="10" value="100">
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="calculate-button" id="calculate-savings">Calculate Savings</button>
+                                </div>
+                                
+                                <div class="calculator-results">
+                                    <div class="result-item">
+                                        <h4>Total Adventure Cost</h4>
+                                        <div class="result-value" id="total-cost">$8,000</div>
+                                    </div>
+                                    <div class="result-item">
+                                        <h4>Individual Cost (Traditional)</h4>
+                                        <div class="result-value" id="individual-cost">$8,000</div>
+                                    </div>
+                                    <div class="result-item">
+                                        <h4>Your Cost (With Collective)</h4>
+                                        <div class="result-value highlight" id="collective-cost">$1,000</div>
+                                    </div>
+                                    <div class="result-item">
+                                        <h4>Months to Fund</h4>
+                                        <div class="result-value" id="months-needed">10</div>
+                                    </div>
+                                    <div class="savings-visualization">
+                                        <div class="savings-bar">
+                                            <div class="savings-amount" style="width: 87.5%"></div>
+                                        </div>
+                                        <div class="savings-label">You save <span id="savings-percentage">87.5%</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="map-content" class="tab-pane" role="tabpanel" aria-labelledby="map-tab">
+                            <div class="adventure-map-container">
+                                <h3>Our Global Footprint</h3>
+                                <div class="map-description">
+                                    <p>Explore our past adventures and upcoming destinations across the globe. Click on markers to learn more about each location.</p>
+                                </div>
+                                <div class="adventure-map" id="adventure-map">
+                                    <!-- Map will be displayed here using JavaScript -->
+                                    <div class="map-placeholder">
+                                        <img src="https://via.placeholder.com/1200x600/1A1A2E/FFFFFF?text=Interactive+Map+Loading" alt="Map placeholder">
+                                        <div class="map-overlay">
+                                            <div class="map-legend">
+                                                <div class="legend-item">
+                                                    <span class="legend-marker past-marker"></span>
+                                                    <span>Past Adventures</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-marker upcoming-marker"></span>
+                                                    <span>Upcoming Adventures</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-marker proposed-marker"></span>
+                                                    <span>Proposed Destinations</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="map-details" id="map-details">
+                                    <h4>Select a location on the map</h4>
+                                    <p>Click any marker to see details about that adventure</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="allocation-content" class="tab-pane" role="tabpanel" aria-labelledby="allocation-tab">
+                            <div class="allocation-visualization">
+                                <h3>How We Allocate Our Funds</h3>
+                                <div class="allocation-description">
+                                    <p>Transparency is key to our collective. See how our pool of funds is typically allocated across different types of experiences.</p>
+                                </div>
+                                <div class="allocation-chart-container">
+                                    <div class="allocation-chart" id="allocation-chart">
+                                        <!-- Chart will be displayed here using JavaScript -->
+                                        <div class="chart-placeholder">
+                                            <div class="pie-chart">
+                                                <div class="pie-segment travel" style="--percentage: 40%;"></div>
+                                                <div class="pie-segment food" style="--percentage: 20%;"></div>
+                                                <div class="pie-segment experience" style="--percentage: 30%;"></div>
+                                                <div class="pie-segment reserve" style="--percentage: 10%;"></div>
+                                                <div class="chart-center">Fund<br>Allocation</div>
+                                            </div>
+                                            <div class="chart-legend">
+                                                <div class="legend-item">
+                                                    <span class="legend-color travel"></span>
+                                                    <span>Travel (40%)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-color food"></span>
+                                                    <span>Food & Drink (20%)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-color experience"></span>
+                                                    <span>Experiences (30%)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-color reserve"></span>
+                                                    <span>Reserve Fund (10%)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="allocation-benefits">
+                                    <h4>Benefits of Our Approach</h4>
+                                    <ul class="benefits-list">
+                                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Transparency in how all funds are used</li>
+                                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Democratic decision-making on fund allocation</li>
+                                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Reserve fund for unexpected opportunities</li>
+                                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Regular adjustment based on member feedback</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter" class="newsletter section" aria-labelledby="newsletter-heading">
+            <div class="container">
+                <div class="section-heading fade-in">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-envelope-open-text"></i></span>
+                    <h2 id="newsletter-heading">Stay Updated</h2>
+                </div>
+                
+                <div class="newsletter-container">
+                    <div class="newsletter-content">
+                        <p>Join our mailing list to receive updates on new adventures, expedition reports, and tips on creating your own social fund.</p>
+                        <ul class="newsletter-benefits">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Early access to upcoming trips</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Exclusive member stories and photos</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tips for creating your own adventures</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> No spam, unsubscribe anytime</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="newsletter-form-container">
+                        <form id="newsletter-form" class="newsletter-form" novalidate>
+                            <div class="form-group">
+                                <label for="newsletter-email">Email Address</label>
+                                <input type="email" id="newsletter-email" name="email" required 
+                                       aria-describedby="email-error">
+                                <span class="error-message" id="email-error" aria-live="polite"></span>
+                            </div>
+                            
+                            <div class="form-group preferences-group">
+                                <p class="preferences-label">I'm interested in: (optional)</p>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="pref-travel" name="preferences" value="travel">
+                                        <label for="pref-travel">Travel Adventures</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="pref-food" name="preferences" value="food">
+                                        <label for="pref-food">Food & Drink</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="pref-experiences" name="preferences" value="experiences">
+                                        <label for="pref-experiences">Local Experiences</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="pref-tips" name="preferences" value="tips">
+                                        <label for="pref-tips">Fund Setup Tips</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="subscribe-button">
+                                    <span>Subscribe</span>
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Newsletter confirmation message (hidden by default) -->
+                <div class="newsletter-confirmation" id="newsletter-confirmation" role="alert" aria-hidden="true">
+                    <div class="confirmation-content">
+                        <div class="confirmation-icon">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        </div>
+                        <h3>Thank You for Subscribing!</h3>
+                        <p>We've sent a confirmation email to your inbox. Please check your email to complete the subscription process.</p>
+                        <button class="close-confirmation" id="close-confirmation">Close</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section" aria-labelledby="contact-heading">
+            <div class="container">
+                <div class="section-heading fade-in">
                     <span class="section-icon" aria-hidden="true"><i class="fas fa-paper-plane"></i></span>
                     <h2 id="contact-heading">Get In Touch</h2>
                 </div>
-                <p class="join-text">Curious about how we operate or interested in starting your own social fund?</p>
-                <a href="mailto:contact@exoticexpenditures.com" class="contact-button" onclick="gtag('event', 'click', {'event_category': 'engagement', 'event_label': 'email_contact'})">
-                    <i class="fas fa-envelope" aria-hidden="true"></i> Drop Us a Line
-                </a>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <p class="contact-intro">Curious about how we operate or interested in starting your own social fund? We'd love to hear from you!</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h3>Email Us</h3>
+                                    <p><a href="mailto:contact@exoticexpenditures.com">contact@exoticexpenditures.com</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h3>Meeting Schedule</h3>
+                                    <p>We meet virtually on the first Tuesday of each month</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h3>Social Media</h3>
+                                    <div class="social-links">
+                                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <h3>Send Us a Message</h3>
+                        <form id="contact-form" class="contact-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Name</label>
+                                    <input type="text" id="contact-name" name="name" required aria-describedby="name-error">
+                                    <span class="error-message" id="name-error" aria-live="polite"></span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contact-email">Email</label>
+                                    <input type="email" id="contact-email" name="email" required aria-describedby="contact-email-error">
+                                    <span class="error-message" id="contact-email-error" aria-live="polite"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-subject">Subject</label>
+                                <select id="contact-subject" name="subject">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="membership">Membership Information</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="advice">Fund Setup Advice</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+                                <span class="error-message" id="message-error" aria-live="polite"></span>
+                            </div>
+                            
+                            <div class="form-group privacy-consent">
+                                <input type="checkbox" id="privacy-consent" name="privacy-consent" required aria-describedby="privacy-error">
+                                <label for="privacy-consent">I agree to the <a href="#">privacy policy</a> and consent to being contacted about my inquiry.</label>
+                                <span class="error-message" id="privacy-error" aria-live="polite"></span>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="submit-button">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <!-- Contact form confirmation (hidden by default) -->
+                        <div class="form-confirmation" id="contact-confirmation" role="alert" aria-hidden="true">
+                            <div class="confirmation-icon">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                            </div>
+                            <h3>Message Sent Successfully!</h3>
+                            <p>Thank you for reaching out. We'll get back to you within 48 hours.</p>
+                            <button class="close-confirmation" id="close-contact-confirmation">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -259,6 +913,10 @@
     <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
                 <p>&copy; 2025 Exotic Expenditures, LLC</p>
                 <p class="footer-tagline">Making memories, not profits</p>
                 <div class="social-icons">
@@ -269,7 +927,7 @@
         </div>
     </footer>
 
-    <script src="js/main.min.js" defer></script>
-    <script src="js/accessibility.js" defer></script>
+    <script src="js/bundle.min.js" defer></script>
+    <script src="js/visual-animations.js" defer></script>
 </body>
 </html>
