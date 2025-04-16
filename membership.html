@@ -446,57 +446,184 @@
                     
                     <p>To apply, complete the form below. Applications are reviewed monthly, and selected candidates will be invited to attend an upcoming event as a guest before final membership decisions.</p>
 
-                    <form class="membership-form" id="membershipForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                            <span class="help-text">As it would appear on official documents</span>
+                    <form class="membership-form multi-step-form" id="membershipForm">
+                        <div class="form-progress">
+                            <div class="progress-bar">
+                                <div class="progress-indicator" id="progressIndicator"></div>
+                            </div>
+                            <div class="step-indicators">
+                                <div class="step-indicator active" data-step="1">
+                                    <span class="step-number">1</span>
+                                    <span class="step-label">Personal Info</span>
+                                </div>
+                                <div class="step-indicator" data-step="2">
+                                    <span class="step-number">2</span>
+                                    <span class="step-label">Experience</span>
+                                </div>
+                                <div class="step-indicator" data-step="3">
+                                    <span class="step-number">3</span>
+                                    <span class="step-label">Preferences</span>
+                                </div>
+                                <div class="step-indicator" data-step="4">
+                                    <span class="step-number">4</span>
+                                    <span class="step-label">Confirmation</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                        <!-- Step 1: Personal Information -->
+                        <div class="form-step active" id="step1">
+                            <h3 class="step-title">Personal Information</h3>
+                            <p class="step-description">Tell us a bit about yourself. All information is kept confidential and only shared with existing members during the application review process.</p>
+                            
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="help-text">As it would appear on official documents</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">City & State</label>
+                                <input type="text" id="location" name="location" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="referral">Were you referred by a current member? If so, who?</label>
+                                <input type="text" id="referral" name="referral">
+                                <span class="help-text">Referrals from current members are appreciated but not required</span>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="next-button">Continue <i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required>
+                        <!-- Step 2: Experience and Interests -->
+                        <div class="form-step" id="step2">
+                            <h3 class="step-title">Your Vision & Interests</h3>
+                            <p class="step-description">Help us understand what you would bring to our collective and what experiences interest you most.</p>
+                            
+                            <div class="form-group full-width">
+                                <label for="why-join">Why do you want to join Exotic Expenditures?</label>
+                                <textarea id="why-join" name="why-join" rows="4" required></textarea>
+                                <span class="help-text">Tell us what attracts you to our collective model and what you hope to gain and contribute</span>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="dream-experience">Describe a dream experience you'd like to propose if you became a member:</label>
+                                <textarea id="dream-experience" name="dream-experience" rows="4" required></textarea>
+                                <span class="help-text">We're looking for creative ideas that would benefit from collective funding</span>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="prev-button"><i class="fas fa-arrow-left"></i> Back</button>
+                                <button type="button" class="next-button">Continue <i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="location">City & State</label>
-                            <input type="text" id="location" name="location" required>
+                        <!-- Step 3: Experience Preferences -->
+                        <div class="form-step" id="step3">
+                            <h3 class="step-title">Experience Preferences</h3>
+                            <p class="step-description">Tell us about the types of adventures that interest you most so we can better match our collective experiences to member preferences.</p>
+                            
+                            <div class="form-group interest-selection">
+                                <label>Which types of experiences interest you most? (Select all that apply)</label>
+                                <div class="checkbox-group">
+                                    <div class="interest-checkbox">
+                                        <input type="checkbox" id="travel" name="interests" value="travel">
+                                        <label for="travel">International Travel</label>
+                                    </div>
+                                    <div class="interest-checkbox">
+                                        <input type="checkbox" id="adventure" name="interests" value="adventure">
+                                        <label for="adventure">Adventure & Adrenaline</label>
+                                    </div>
+                                    <div class="interest-checkbox">
+                                        <input type="checkbox" id="culinary" name="interests" value="culinary">
+                                        <label for="culinary">Fine Dining & Culinary</label>
+                                    </div>
+                                    <div class="interest-checkbox">
+                                        <input type="checkbox" id="cultural" name="interests" value="cultural">
+                                        <label for="cultural">Cultural & Arts</label>
+                                    </div>
+                                    <div class="interest-checkbox">
+                                        <input type="checkbox" id="wellness" name="interests" value="wellness">
+                                        <label for="wellness">Luxury & Wellness</label>
+                                    </div>
+                                    <div class="interest-checkbox">
+                                        <input type="checkbox" id="nature" name="interests" value="nature">
+                                        <label for="nature">Nature & Wildlife</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget-range">What is your comfortable monthly contribution range?</label>
+                                <select id="budget-range" name="budget-range" required>
+                                    <option value="">Please select...</option>
+                                    <option value="standard">$150 - Standard Membership</option>
+                                    <option value="premium">$200-$300 - Premium Adventures</option>
+                                    <option value="luxury">$300+ - Ultra Luxury Experiences</option>
+                                </select>
+                                <span class="help-text">Standard membership starts at $150/month but some events require additional contributions</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="availability">How often could you participate in group adventures?</label>
+                                <select id="availability" name="availability" required>
+                                    <option value="">Please select...</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="quarterly">Quarterly</option>
+                                    <option value="biannual">Twice a Year</option>
+                                    <option value="annual">Once a Year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="prev-button"><i class="fas fa-arrow-left"></i> Back</button>
+                                <button type="button" class="next-button">Continue <i class="fas fa-arrow-right"></i></button>
+                            </div>
                         </div>
 
-                        <div class="form-group full-width">
-                            <label for="why-join">Why do you want to join Exotic Expenditures?</label>
-                            <textarea id="why-join" name="why-join" rows="4" required></textarea>
-                            <span class="help-text">Tell us what attracts you to our collective model and what you hope to gain and contribute</span>
-                        </div>
+                        <!-- Step 4: Confirmation -->
+                        <div class="form-step" id="step4">
+                            <h3 class="step-title">Final Confirmation</h3>
+                            <p class="step-description">Please review the membership expectations before submitting your application.</p>
+                            
+                            <div class="confirmation-checklist">
+                                <div class="form-group form-checkbox">
+                                    <input type="checkbox" id="commitment" name="commitment" required>
+                                    <label for="commitment">I understand the financial commitment (minimum $150/month) and agree to make timely payments if accepted</label>
+                                </div>
+                                
+                                <div class="form-group form-checkbox">
+                                    <input type="checkbox" id="participation" name="participation" required>
+                                    <label for="participation">I commit to active participation, including voting on adventure proposals and attending at least one event annually</label>
+                                </div>
+                                
+                                <div class="form-group form-checkbox">
+                                    <input type="checkbox" id="values" name="values" required>
+                                    <label for="values">I embrace the collective's values of shared decision-making, respect, and community</label>
+                                </div>
+                            </div>
 
-                        <div class="form-group full-width">
-                            <label for="dream-experience">Describe a dream experience you'd like to propose if you became a member:</label>
-                            <textarea id="dream-experience" name="dream-experience" rows="4" required></textarea>
-                            <span class="help-text">We're looking for creative ideas that would benefit from collective funding</span>
-                        </div>
+                            <div class="form-privacy-note">
+                                <p>By submitting this application, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>. We respect your privacy and will only use your information for membership consideration.</p>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="referral">Were you referred by a current member? If so, who?</label>
-                            <input type="text" id="referral" name="referral">
-                            <span class="help-text">Referrals from current members are appreciated but not required</span>
-                        </div>
-
-                        <div class="form-group form-checkbox">
-                            <input type="checkbox" id="commitment" name="commitment" required>
-                            <label for="commitment">I understand the financial commitment ($150/month) and participation expectations</label>
-                        </div>
-
-                        <div class="form-privacy-note">
-                            <p>By submitting this application, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>. We respect your privacy and will only use your information for membership consideration.</p>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <button type="submit" class="submit-button">Submit Application</button>
+                            <div class="form-navigation">
+                                <button type="button" class="prev-button"><i class="fas fa-arrow-left"></i> Back</button>
+                                <button type="submit" class="submit-button">Submit Application</button>
+                            </div>
                         </div>
                     </form>
                 </div>
