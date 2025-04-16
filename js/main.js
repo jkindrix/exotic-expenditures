@@ -86,6 +86,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    // Dropdown functionality for mobile
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    if (dropdownToggles.length > 0) {
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                // Only handle clicks in mobile view
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    
+                    const parent = toggle.closest('.has-dropdown');
+                    const dropdownMenu = parent.querySelector('.dropdown-menu');
+                    
+                    // Toggle the active class
+                    dropdownMenu.classList.toggle('active');
+                    
+                    // Update aria-expanded attribute
+                    const isExpanded = dropdownMenu.classList.contains('active');
+                    toggle.setAttribute('aria-expanded', isExpanded);
+                    
+                    // Rotate the chevron icon
+                    const chevron = toggle.querySelector('.fa-chevron-down');
+                    if (chevron) {
+                        chevron.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0)';
+                    }
+                }
+            });
+        });
+        
+        // Close all dropdowns when window is resized to desktop view
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+                
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    const chevron = toggle.querySelector('.fa-chevron-down');
+                    if (chevron) {
+                        chevron.style.transform = 'rotate(0)';
+                    }
+                });
+            }
+        });
+    }
+    
     // Shrink navbar on scroll
     const shrinkNav = () => {
         if (window.scrollY > 100) {

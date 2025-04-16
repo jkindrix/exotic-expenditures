@@ -62,6 +62,106 @@
 .search-form button:hover {
     color: var(--secondary);
 }
+
+/* Dropdown Menu Styles */
+.nav-item.has-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.nav-item.has-dropdown:hover .dropdown-menu,
+.nav-item.has-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 8px 20px;
+    color: var(--dark);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary);
+    padding-left: 25px;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-toggle .fa-chevron-down {
+    margin-left: 5px;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.nav-item.has-dropdown:hover .dropdown-toggle .fa-chevron-down,
+.nav-item.has-dropdown:focus-within .dropdown-toggle .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 992px) {
+    .dropdown-menu {
+        position: static;
+        background-color: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0 0 0 15px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+        margin: 0;
+    }
+    
+    .dropdown-menu.active {
+        display: block;
+    }
+    
+    .nav-item.has-dropdown {
+        flex-direction: column;
+    }
+    
+    .dropdown-toggle {
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 15px;
+    }
+    
+    .dropdown-item {
+        padding: 10px 15px;
+        color: white;
+    }
+    
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+}
 .page-header {
     background-color: var(--dark);
     position: sticky;
