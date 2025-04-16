@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Exotic Expenditures, LLC</title>
+    <link rel="preload" href="js/bundle.min.js" as="script">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/additional-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,27 +13,42 @@
     <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="cursor"></div>
+    <div class="cursor" aria-hidden="true"></div>
+    
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <header class="page-header">
         <div class="container">
-            <nav class="main-nav">
-                <a href="index.html" class="logo">Exotic Expenditures</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="membership.html">Membership</a></li>
-                    <li><a href="faq.html" class="active">FAQ</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact" class="contact-link">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
+            <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main navigation">
+                <div class="nav-container">
+                    <a href="index.html" class="nav-logo">Exotic Expenditures</a>
+                    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="index.html#what-we-do" class="nav-link">What We Do</a></li>
+                        <li class="nav-item"><a href="index.html#experiences" class="nav-link">Experiences</a></li>
+                        <li class="nav-item"><a href="membership.html" class="nav-link">Membership</a></li>
+                        <li class="nav-item"><a href="faq.html" class="nav-link active">FAQ</a></li>
+                        <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">FAQ</li>
+                </ul>
+            </div>
+        </div>
+        
         <section class="faq-hero">
             <div class="container">
                 <div class="section-heading">
@@ -40,17 +56,27 @@
                     <h1>Frequently Asked Questions</h1>
                     <p class="subtitle">Everything you need to know about Exotic Expenditures</p>
                 </div>
+                <div class="faq-hero-decoration">
+                    <div class="decoration-element element-1"></div>
+                    <div class="decoration-element element-2"></div>
+                    <div class="decoration-element element-3"></div>
+                </div>
             </div>
         </section>
 
         <section class="faq-section">
             <div class="container">
+                <div class="faq-intro">
+                    <p>We've compiled answers to the most common questions about Exotic Expenditures. If you don't find what you're looking for, feel free to <a href="index.html#contact">contact us</a> directly.</p>
+                </div>
+                
                 <div class="faq-categories">
                     <button class="category-button active" data-category="all">All Questions</button>
                     <button class="category-button" data-category="about">About Us</button>
                     <button class="category-button" data-category="membership">Membership</button>
                     <button class="category-button" data-category="funding">Funding</button>
                     <button class="category-button" data-category="events">Events</button>
+                    <button class="category-button" data-category="legal">Legal</button>
                 </div>
 
                 <div class="faq-container">
@@ -177,6 +203,58 @@
                             <p>For most events, members can bring one guest by paying an additional guest fee determined by the cost of the experience. Some of our most expensive or limited-capacity experiences are members-only. We decide this on a case-by-case basis during the planning phase of each event. Guest policies are clearly communicated when events are announced.</p>
                         </div>
                     </div>
+
+                    <!-- Legal Questions -->
+                    <div class="faq-item" data-category="legal">
+                        <div class="faq-question">
+                            <h3>How is liability handled for adventure activities?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>All members sign a comprehensive liability waiver upon joining Exotic Expenditures. For higher-risk activities, we secure appropriate insurance coverage, which is factored into the event cost. Additionally, we only work with vetted, professional vendors who carry their own liability insurance. Our LLC structure provides an additional layer of protection for members.</p>
+                            <p>While we take all reasonable precautions, adventure activities inherently involve some risk. We encourage members to maintain their own personal insurance coverage appropriate to their participation levels.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="legal">
+                        <div class="faq-question">
+                            <h3>What happens to my personal data when I apply for membership?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Your application data is securely stored and only shared with current members as part of our review process. We do not sell or share your information with third parties for marketing purposes. If your application is not accepted, we retain your information for six months before deletion in case a spot opens up soon after. See our <a href="privacy.html">Privacy Policy</a> for complete details on how we handle personal information.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="events">
+                        <div class="faq-question">
+                            <h3>What's your most memorable adventure to date?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While we've had many incredible experiences, our most memorable was chartering a catamaran in the British Virgin Islands for a week. Twelve members participated, with costs shared equally. We visited remote islands, learned to sail together, and enjoyed incredible snorkeling spots that would be inaccessible to most travelers. The total cost per person was approximately 60% less than if anyone had attempted this trip individually.</p>
+                            <div class="faq-image">
+                                <img src="assets/images/adventure-photos/placeholder-adventure.jpg" alt="Group sailing adventure" class="adventure-image">
+                                <span class="image-caption">Our sailing adventure in the British Virgin Islands</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="funding">
+                        <div class="faq-question">
+                            <h3>How do you handle fluctuating costs for international adventures?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For international adventures planned well in advance, we maintain a contingency fund of approximately 15% of the estimated total cost to account for currency fluctuations, unexpected fees, or price increases. If the contingency isn't needed, these funds roll back into our collective account for future adventures. For adventures with significantly variable costs, we sometimes collect an initial deposit and then finalize the remaining balance closer to the date when costs are more certain.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-search">
+                    <h3>Can't find what you're looking for?</h3>
+                    <input type="text" id="faqSearch" placeholder="Search questions..." class="search-input">
+                    <p class="search-help">Type a keyword above to search across all FAQs</p>
                 </div>
             </div>
         </section>
@@ -192,7 +270,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
@@ -202,8 +280,8 @@
                 <p>&copy; 2025 Exotic Expenditures, LLC</p>
                 <p class="footer-tagline">Making memories, not profits</p>
                 <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram" onclick="gtag('event', 'social_click', {'adventure_category': 'social', 'event_label': 'instagram'})"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook" onclick="gtag('event', 'social_click', {'adventure_category': 'social', 'event_label': 'facebook'})"><i class="fab fa-facebook" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -219,7 +297,7 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
-    <script src="js/faq.js"></script>
+    <script src="js/bundle.min.js" defer></script>
+    <script src="js/faq.js" defer></script>
 </body>
 </html>
