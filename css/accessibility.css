@@ -1,0 +1,122 @@
+/* Accessibility Enhancements */
+:root {
+    --focus-outline: 3px solid #0099CC;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1A1A2E;
+    color: white;
+    padding: 8px 15px;
+    z-index: 2000;
+    transition: top 0.3s;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus styles for keyboard navigation */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* High contrast focus indicators */
+.nav-link:focus, .cta-button:focus, .contact-button:focus, .social-icon:focus {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* Better color contrast */
+.primary {
+    background-color: #E01F54; /* Darkened for better contrast */
+}
+
+.secondary {
+    background-color: #0099CC; /* Darkened for better contrast */
+}
+
+.accent {
+    background-color: #EFC050; /* Darkened for better contrast */
+}
+
+/* Ensure text over gradients has sufficient contrast */
+.cta-button, .section-icon, .card-icon {
+    color: white;
+    font-weight: 600;
+}
+
+/* Reduce motion option */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Enhanced visible focus states */
+.nav-toggle:focus {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* Improved form and input styling for accessibility */
+input:focus, textarea:focus, select:focus {
+    outline: var(--focus-outline);
+    outline-offset: 0;
+}
+
+/* Improved color contrast for placeholder text */
+::placeholder {
+    color: #555;
+    opacity: 1;
+}
+
+/* Better link underlines for readability */
+main a:not(.btn):not(.nav-link):not(.cta-button):not(.contact-button):not(.social-icon) {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Ensuring proper contrast for the nav menu */
+.nav-link {
+    color: white;
+    font-weight: 700; /* Bolder for better visibility */
+}
+
+/* ARIA-hidden elements should not be focusable */
+[aria-hidden="true"] {
+    visibility: hidden;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Contrast improvements for content sections */
+section p {
+    color: #222; /* Darker text color for better readability */
+}
+
+.footer-content p {
+    color: white;
+    font-weight: 400;
+}
