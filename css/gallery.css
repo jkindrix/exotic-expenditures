@@ -1,0 +1,409 @@
+/* Gallery Section Styles */
+.gallery {
+    background-color: #f9f9f9;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery .section-subtitle {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Gallery decorative elements */
+.gallery::before,
+.gallery::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(135deg, rgba(51, 204, 255, 0.1) 0%, rgba(255, 51, 102, 0.1) 100%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.gallery::before {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    right: -100px;
+    animation: float-animation 20s ease-in-out infinite;
+}
+
+.gallery::after {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    left: 5%;
+    animation: float-animation 15s ease-in-out infinite reverse;
+}
+
+/* Gallery Filters */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-filter {
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-filter:hover,
+.gallery-filter.active {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.2);
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.gallery-item.fade-in {
+    animation: fadeInUp 0.6s forwards;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-image img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.gallery-overlay p {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.gallery-view {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-view:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+/* Load More Button */
+.gallery-load-more {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: var(--gradient-1);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.load-more-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 51, 102, 0.3);
+}
+
+.load-more-btn i {
+    font-size: 1.1rem;
+}
+
+/* Gallery Lightbox */
+.gallery-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gallery-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lightbox-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+}
+
+.lightbox-caption h3 {
+    margin: 0 0 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+}
+
+.lightbox-caption p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-lightbox:hover {
+    color: var(--primary);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lightbox-prev {
+    left: -70px;
+}
+
+.lightbox-next {
+    right: -70px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: var(--primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Animation for gallery items */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animations for floating decorative elements */
+@keyframes float-animation {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20px, 20px) rotate(5deg);
+    }
+    50% {
+        transform: translate(10px, 40px) rotate(-5deg);
+    }
+    75% {
+        transform: translate(-20px, 20px) rotate(3deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .lightbox-prev {
+        left: -50px;
+    }
+    
+    .lightbox-next {
+        right: -50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        padding: 80px 0;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .lightbox-prev, 
+    .lightbox-next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-filter {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .load-more-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .gallery-item,
+    .gallery-item:hover,
+    .gallery-overlay,
+    .gallery-item:hover .gallery-overlay,
+    .gallery-image img,
+    .gallery-item:hover .gallery-image img,
+    .load-more-btn:hover,
+    .gallery-filter:hover,
+    .gallery-filter.active {
+        transition: none;
+        animation: none;
+        transform: none;
+    }
+}
