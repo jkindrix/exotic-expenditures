@@ -3,6 +3,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Exotic Expenditures website loaded');
     
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
     // Navigation elements
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -17,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navToggle.innerHTML = navMenu.classList.contains('active') ? 
                 '<i class="fas fa-times"></i>' : 
                 '<i class="fas fa-bars"></i>';
+            navToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
         });
     }
     
@@ -124,8 +128,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // Hero slideshow
+    const initSlideshow = () => {
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length === 0) return;
+        
+        let currentSlide = 0;
+        
+        const showSlide = (index) => {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        };
+        
+        const nextSlide = () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        };
+        
+        // Only run slideshow if user doesn't prefer reduced motion
+        if (!prefersReducedMotion) {
+            setInterval(nextSlide, 5000);
+        }
+    };
+    
+    // Initialize slideshow
+    initSlideshow();
+
     // Animation on scroll
     const animateOnScroll = () => {
+        const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
         const cards = document.querySelectorAll('.card');
         
         sections.forEach(section => {
@@ -137,7 +168,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
+        // Animate new animation class elements
+        animatedElements.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight * 0.85) {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, 100 * Array.from(animatedElements).indexOf(el));
+            }
+        });
+        
+        // Maintain backward compatibility with old animation style
         cards.forEach(card => {
+            // Skip cards that already use the new animation classes
+            if (card.classList.contains('fade-in') || 
+                card.classList.contains('slide-in-left') || 
+                card.classList.contains('slide-in-right') || 
+                card.classList.contains('scale-in')) {
+                return;
+            }
+            
             const cardTop = card.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
             
@@ -154,13 +206,84 @@ document.addEventListener('DOMContentLoaded', () => {
         updateActiveNavLink();
     };
     
-    // Set initial styles for animation
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
+    // Animated stat counters
+    const animateStats = () => {
+        const stats = document.querySelectorAll('.stat-value');
+        if (stats.length === 0) return;
+        
+        stats.forEach(stat => {
+            const targetValue = parseInt(stat.getAttribute('data-value'));
+            if (isNaN(targetValue)) return;
+            
+            // If reduced motion is preferred, just set the value directly
+            if (prefersReducedMotion) {
+                stat.textContent = targetValue;
+                return;
+            }
+            
+            const duration = 2000; // ms
+            const frameDuration = 1000 / 60; // 60fps
+            const totalFrames = Math.round(duration / frameDuration);
+            let frame = 0;
+            
+            const counter = setInterval(() => {
+                frame++;
+                const progress = frame / totalFrames;
+                const currentValue = Math.round(targetValue * progress);
+                
+                stat.textContent = currentValue;
+                
+                if (frame === totalFrames) {
+                    clearInterval(counter);
+                }
+            }, frameDuration);
+        });
+    };
+    
+    // Initialize stat counters when visible
+    const statsContainer = document.querySelector('.stats-container');
+    if (statsContainer) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        observer.observe(statsContainer);
+    }
+    
+    // Set initial styles for animation, considering reduced motion preferences
+    if (prefersReducedMotion) {
+        // If user prefers reduced motion, skip animations
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+            el.classList.add('active');
+        });
+        
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        });
+    } else {
+        // Set initial states for standard animations
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            // Skip cards that already use the new animation classes
+            if (card.classList.contains('fade-in') || 
+                card.classList.contains('slide-in-left') || 
+                card.classList.contains('slide-in-right') || 
+                card.classList.contains('scale-in')) {
+                return;
+            }
+            
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+    }
     
     // Run animation on page load and scroll
     animateOnScroll();
