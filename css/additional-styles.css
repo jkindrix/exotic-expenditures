@@ -1,6 +1,67 @@
 /* Additional styles for FAQ, Membership, and Legal pages */
 
 /* ===== NAVIGATION STYLES ===== */
+/* Search functionality in navigation */
+.nav-search {
+    position: relative;
+    margin-left: 10px;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.search-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-form {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 10px;
+    display: none;
+    width: 250px;
+    z-index: 10;
+}
+
+.search-form.active {
+    display: flex;
+}
+
+.search-form input {
+    flex: 1;
+    border: none;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.search-form input:focus {
+    outline: none;
+}
+
+.search-form button {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.search-form button:hover {
+    color: var(--secondary);
+}
 .page-header {
     background-color: var(--dark);
     position: sticky;

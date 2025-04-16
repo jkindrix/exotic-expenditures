@@ -1,6 +1,23 @@
 // FAQ functionality for Exotic Expenditures
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Check for search parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+    
+    // If there's a search parameter, focus on search and trigger search
+    if (searchParam) {
+        const faqSearch = document.getElementById('faqSearch');
+        if (faqSearch) {
+            faqSearch.value = searchParam;
+            faqSearch.focus();
+            // Trigger the input event to perform the search
+            faqSearch.dispatchEvent(new Event('input'));
+            
+            // Scroll to search results area
+            document.querySelector('.faq-search').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
     // Toggle FAQ question/answer
     const faqQuestions = document.querySelectorAll('.faq-question');
     

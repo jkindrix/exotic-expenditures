@@ -40,6 +40,7 @@
     
     <link rel="stylesheet" href="css/bundle.min.css">
     <link rel="stylesheet" href="css/visual-enhancements.css">
+    <link rel="stylesheet" href="css/gallery.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous" defer></script>
     
@@ -115,6 +116,17 @@
                 <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li class="nav-item"><a href="#calculators" class="nav-link">Planning</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item nav-search">
+                    <button class="search-toggle" id="search-toggle" aria-label="Toggle search">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                    <div class="search-form" id="search-form">
+                        <input type="text" id="siteSearch" placeholder="Search website..." aria-label="Search website">
+                        <button type="submit" aria-label="Submit search">
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
@@ -321,6 +333,139 @@
                         <div class="lightbox-details">
                             <!-- Content will be added dynamically -->
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="gallery section" aria-labelledby="gallery-heading">
+            <div class="container">
+                <div class="section-heading fade-in">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-camera"></i></span>
+                    <h2 id="gallery-heading">Adventure Gallery</h2>
+                </div>
+                <p class="section-subtitle fade-in">Glimpses of our extraordinary journeys and shared experiences from around the world.</p>
+                
+                <div class="gallery-filters" role="tablist">
+                    <button class="gallery-filter active" data-filter="all" role="tab" aria-selected="true">All Photos</button>
+                    <button class="gallery-filter" data-filter="travel" role="tab" aria-selected="false">Travel</button>
+                    <button class="gallery-filter" data-filter="events" role="tab" aria-selected="false">Events</button>
+                    <button class="gallery-filter" data-filter="food" role="tab" aria-selected="false">Food & Drink</button>
+                    <button class="gallery-filter" data-filter="activities" role="tab" aria-selected="false">Activities</button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <!-- Travel Category -->
+                    <div class="gallery-item" data-category="travel">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Road trip through mountains">
+                            <div class="gallery-overlay">
+                                <h3>Mountain Road Trip</h3>
+                                <p>Swiss Alps, Summer 2024</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="travel">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Aerial view of tropical island">
+                            <div class="gallery-overlay">
+                                <h3>Private Island Paradise</h3>
+                                <p>Maldives, December 2023</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Events Category -->
+                    <div class="gallery-item" data-category="events">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1528605105345-5344ea20e269?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hot air balloons at sunset">
+                            <div class="gallery-overlay">
+                                <h3>Hot Air Balloon Festival</h3>
+                                <p>Cappadocia, Turkey, April 2024</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="events">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1556035511-3168381ea4d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Music concert with light show">
+                            <div class="gallery-overlay">
+                                <h3>VIP Concert Experience</h3>
+                                <p>Paris, France, March 2024</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Food Category -->
+                    <div class="gallery-item" data-category="food">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gourmet meal at high-end restaurant">
+                            <div class="gallery-overlay">
+                                <h3>Michelin Star Experience</h3>
+                                <p>Barcelona, Spain, February 2024</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="food">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wine tasting in vineyard">
+                            <div class="gallery-overlay">
+                                <h3>Private Vineyard Tour</h3>
+                                <p>Napa Valley, USA, September 2023</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activities Category -->
+                    <div class="gallery-item" data-category="activities">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1601024445121-e5b82f020549?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Formula 1 racing car on track">
+                            <div class="gallery-overlay">
+                                <h3>F1 Driving Experience</h3>
+                                <p>Monaco Circuit, October 2023</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="activities">
+                        <div class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Helicopter over mountain peak">
+                            <div class="gallery-overlay">
+                                <h3>Helicopter Mountain Camping</h3>
+                                <p>Rocky Mountains, May 2024</p>
+                                <button class="gallery-view" aria-label="View larger image"><i class="fas fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-load-more">
+                    <button class="load-more-btn">
+                        Load More Photos <i class="fas fa-plus-circle"></i>
+                    </button>
+                </div>
+                
+                <!-- Gallery Lightbox -->
+                <div class="gallery-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
+                    <div class="lightbox-content">
+                        <button class="close-lightbox" aria-label="Close lightbox">&times;</button>
+                        <div class="lightbox-image">
+                            <!-- Image will be inserted dynamically -->
+                        </div>
+                        <div class="lightbox-caption">
+                            <!-- Caption will be inserted dynamically -->
+                        </div>
+                        <button class="lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                        <button class="lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -929,5 +1074,6 @@
 
     <script src="js/bundle.min.js" defer></script>
     <script src="js/visual-animations.js" defer></script>
+    <script src="js/gallery.js" defer></script>
 </body>
 </html>

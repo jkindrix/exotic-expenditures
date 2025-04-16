@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
     
+    // Search functionality
+    const searchToggle = document.getElementById('search-toggle');
+    const searchForm = document.getElementById('search-form');
+    const siteSearch = document.getElementById('siteSearch');
+    
     // Toggle mobile menu
     if (navToggle) {
         navToggle.addEventListener('click', () => {
@@ -33,6 +38,53 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    
+    // Toggle search form
+    if (searchToggle && searchForm) {
+        searchToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchForm.classList.toggle('active');
+            if (searchForm.classList.contains('active')) {
+                siteSearch.focus();
+            }
+        });
+        
+        // Close search form when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-search') && searchForm.classList.contains('active')) {
+                searchForm.classList.remove('active');
+            }
+        });
+        
+        // Process search on enter key
+        siteSearch.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const searchTerm = siteSearch.value.trim();
+                if (searchTerm) {
+                    // For now, just redirect to the FAQ page with the search term
+                    window.location.href = `faq.html?search=${encodeURIComponent(searchTerm)}`;
+                }
+            }
+            
+            // Close search on escape key
+            if (e.key === 'Escape') {
+                searchForm.classList.remove('active');
+            }
+        });
+        
+        // Search form submit button
+        const searchSubmit = searchForm.querySelector('button[type="submit"]');
+        if (searchSubmit) {
+            searchSubmit.addEventListener('click', (e) => {
+                e.preventDefault();
+                const searchTerm = siteSearch.value.trim();
+                if (searchTerm) {
+                    window.location.href = `faq.html?search=${encodeURIComponent(searchTerm)}`;
+                }
+            });
+        }
+    }
     
     // Shrink navbar on scroll
     const shrinkNav = () => {
@@ -903,5 +955,246 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Start autoplay
         startAutoplay();
+    }
+
+    // ===== CALCULATOR SECTION =====
+    
+    // Tabbed content functionality
+    const calculatorTabs = document.querySelectorAll('.tab-button');
+    const calculatorPanes = document.querySelectorAll('.tab-pane');
+    
+    if (calculatorTabs.length && calculatorPanes.length) {
+        calculatorTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and panes
+                calculatorTabs.forEach(t => t.classList.remove('active'));
+                calculatorPanes.forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding pane
+                const targetId = tab.getAttribute('aria-controls');
+                document.getElementById(targetId).classList.add('active');
+                
+                // Update ARIA attributes
+                calculatorTabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+                tab.setAttribute('aria-selected', 'true');
+            });
+        });
+    }
+    
+    // Expense Calculator functionality
+    const experienceType = document.getElementById('experience-type');
+    const groupSize = document.getElementById('group-size');
+    const customCostGroup = document.getElementById('custom-cost-group');
+    const customCost = document.getElementById('custom-cost');
+    const contribution = document.getElementById('contribution');
+    const calculateButton = document.getElementById('calculate-savings');
+    
+    if (experienceType && groupSize && customCostGroup && customCost && contribution && calculateButton) {
+        // Show/hide custom cost field when experience type changes
+        experienceType.addEventListener('change', () => {
+            if (experienceType.value === 'custom') {
+                customCostGroup.style.display = 'block';
+            } else {
+                customCostGroup.style.display = 'none';
+            }
+        });
+        
+        // Calculate savings when button is clicked
+        calculateButton.addEventListener('click', () => {
+            // Get adventure cost based on type
+            let adventureCost;
+            if (experienceType.value === 'custom') {
+                adventureCost = parseInt(customCost.value);
+            } else {
+                // Predefined costs for each adventure type
+                const costs = {
+                    'helicopter': 8000,
+                    'zerog': 12000,
+                    'michelin': 4500,
+                    'island': 15000
+                };
+                adventureCost = costs[experienceType.value];
+            }
+            
+            // Get group size and monthly contribution
+            const people = parseInt(groupSize.value);
+            const monthlyContribution = parseInt(contribution.value);
+            
+            // Calculate individual cost without collective
+            const individualCost = adventureCost;
+            
+            // Calculate cost with collective
+            const collectiveCost = adventureCost / people;
+            
+            // Calculate months needed to fund
+            const monthsNeeded = Math.ceil(collectiveCost / monthlyContribution);
+            
+            // Calculate savings percentage
+            const savingsPercentage = Math.round(((individualCost - collectiveCost) / individualCost) * 100);
+            
+            // Update result values
+            document.getElementById('total-cost').textContent = `$${adventureCost.toLocaleString()}`;
+            document.getElementById('individual-cost').textContent = `$${individualCost.toLocaleString()}`;
+            document.getElementById('collective-cost').textContent = `$${collectiveCost.toLocaleString()}`;
+            document.getElementById('months-needed').textContent = monthsNeeded;
+            document.getElementById('savings-percentage').textContent = `${savingsPercentage}%`;
+            
+            // Update savings bar
+            document.querySelector('.savings-amount').style.width = `${savingsPercentage}%`;
+            
+            // Add animation effect to results
+            const resultsContainer = document.querySelector('.calculator-results');
+            resultsContainer.style.animation = 'none';
+            // Trigger reflow
+            void resultsContainer.offsetWidth;
+            resultsContainer.style.animation = 'fadeIn 0.6s ease-out';
+        });
+    }
+    
+    // ===== NEWSLETTER & CONTACT FORMS =====
+    
+    // Newsletter form validation and submission
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterConfirmation = document.getElementById('newsletter-confirmation');
+    const closeNewsletterConfirmation = document.getElementById('close-confirmation');
+    
+    if (newsletterForm && newsletterConfirmation && closeNewsletterConfirmation) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Validate email
+            const emailInput = document.getElementById('newsletter-email');
+            const emailError = document.getElementById('email-error');
+            
+            // Basic email validation
+            if (!emailInput.value.trim()) {
+                emailInput.parentElement.classList.add('error');
+                emailError.textContent = 'Email address is required';
+                emailError.style.display = 'block';
+                return;
+            } else if (!isValidEmail(emailInput.value)) {
+                emailInput.parentElement.classList.add('error');
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.display = 'block';
+                return;
+            } else {
+                emailInput.parentElement.classList.remove('error');
+                emailError.style.display = 'none';
+            }
+            
+            // Simulate form submission (would be AJAX in production)
+            newsletterConfirmation.setAttribute('aria-hidden', 'false');
+            newsletterConfirmation.classList.add('active');
+            
+            // Clear form
+            newsletterForm.reset();
+        });
+        
+        // Close confirmation dialog
+        closeNewsletterConfirmation.addEventListener('click', () => {
+            newsletterConfirmation.classList.remove('active');
+            newsletterConfirmation.setAttribute('aria-hidden', 'true');
+        });
+    }
+    
+    // Contact form validation and submission
+    const contactForm = document.getElementById('contact-form');
+    const contactConfirmation = document.getElementById('contact-confirmation');
+    const closeContactConfirmation = document.getElementById('close-contact-confirmation');
+    
+    if (contactForm && contactConfirmation && closeContactConfirmation) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate name
+            const nameInput = document.getElementById('contact-name');
+            const nameError = document.getElementById('name-error');
+            if (!nameInput.value.trim()) {
+                nameInput.parentElement.classList.add('error');
+                nameError.textContent = 'Name is required';
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameInput.parentElement.classList.remove('error');
+                nameError.style.display = 'none';
+            }
+            
+            // Validate email
+            const emailInput = document.getElementById('contact-email');
+            const emailError = document.getElementById('contact-email-error');
+            if (!emailInput.value.trim()) {
+                emailInput.parentElement.classList.add('error');
+                emailError.textContent = 'Email address is required';
+                emailError.style.display = 'block';
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value)) {
+                emailInput.parentElement.classList.add('error');
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailInput.parentElement.classList.remove('error');
+                emailError.style.display = 'none';
+            }
+            
+            // Validate message
+            const messageInput = document.getElementById('contact-message');
+            const messageError = document.getElementById('message-error');
+            if (!messageInput.value.trim()) {
+                messageInput.parentElement.classList.add('error');
+                messageError.textContent = 'Message is required';
+                messageError.style.display = 'block';
+                isValid = false;
+            } else if (messageInput.value.trim().length < 10) {
+                messageInput.parentElement.classList.add('error');
+                messageError.textContent = 'Message must be at least 10 characters';
+                messageError.style.display = 'block';
+                isValid = false;
+            } else {
+                messageInput.parentElement.classList.remove('error');
+                messageError.style.display = 'none';
+            }
+            
+            // Validate privacy consent
+            const privacyConsent = document.getElementById('privacy-consent');
+            const privacyError = document.getElementById('privacy-error');
+            if (!privacyConsent.checked) {
+                privacyConsent.parentElement.classList.add('error');
+                privacyError.textContent = 'You must agree to the privacy policy';
+                privacyError.style.display = 'block';
+                isValid = false;
+            } else {
+                privacyConsent.parentElement.classList.remove('error');
+                privacyError.style.display = 'none';
+            }
+            
+            if (isValid) {
+                // Simulate form submission (would be AJAX in production)
+                contactConfirmation.classList.add('active');
+                contactConfirmation.style.display = 'block';
+                
+                // Clear form
+                contactForm.reset();
+            }
+        });
+        
+        // Close confirmation message
+        if (closeContactConfirmation) {
+            closeContactConfirmation.addEventListener('click', () => {
+                contactConfirmation.classList.remove('active');
+                contactConfirmation.style.display = 'none';
+            });
+        }
+    }
+    
+    // Email validation helper function
+    function isValidEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 });
