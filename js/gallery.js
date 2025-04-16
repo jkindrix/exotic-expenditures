@@ -5,6 +5,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initGallery();
+    
+    // Check if we need to initialize cookie consent (if not already initialized in main.js)
+    if (document.querySelector('.cookie-consent') && 
+        !document.querySelector('.cookie-consent.active') &&
+        !localStorage.getItem('cookieConsent')) {
+        initCookieConsent();
+    }
 });
 
 function initGallery() {
@@ -224,4 +231,33 @@ function initGalleryAnimations() {
     galleryItems.forEach(item => {
         observer.observe(item);
     });
+}
+
+/**
+ * Cookie consent functionality
+ */
+function initCookieConsent() {
+    const cookieConsent = document.querySelector('.cookie-consent');
+    const acceptCookiesBtn = document.querySelector('.accept-cookies');
+    const declineCookiesBtn = document.querySelector('.decline-cookies');
+    
+    // Check if user has already made a choice
+    const cookieChoice = localStorage.getItem('cookieConsent');
+    
+    if (!cookieChoice && cookieConsent) {
+        // Show cookie consent after slight delay
+        setTimeout(() => {
+            cookieConsent.classList.add('active');
+        }, 1000);
+        
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieConsent.classList.remove('active');
+        });
+        
+        declineCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieConsent.classList.remove('active');
+        });
+    }
 }
