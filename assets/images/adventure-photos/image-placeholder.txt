@@ -1,0 +1,18 @@
+Image Placeholders
+
+These placeholders represent where actual adventure images should be placed for the site.
+
+Recommended image specifications:
+- Adventure images: 1920x1080px JPG (compressed to 300-500KB)
+- Consider using WebP format for modern browsers
+- Make sure images are high-quality and visually engaging
+- Aim for images that convey adventure, exploration, and group activities
+
+Specific images needed:
+1. adventure-1.jpg - Hero slideshow image 1 (primary background)
+2. adventure-2.jpg - Hero slideshow image 2
+3. adventure-3.jpg - Hero slideshow image 3
+4. gallery-1.jpg through gallery-6.jpg - Gallery section images
+5. testimonial-1.jpg through testimonial-3.jpg - Testimonial section photos
+
+Ensure all images are properly licensed for commercial use.
