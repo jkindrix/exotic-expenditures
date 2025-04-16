@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Exotic Expenditures, LLC</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/additional-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <header class="page-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo">Exotic Expenditures</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact" class="contact-link">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="faq-hero">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-icon"><i class="fas fa-question-circle"></i></span>
+                    <h1>Frequently Asked Questions</h1>
+                    <p class="subtitle">Everything you need to know about Exotic Expenditures</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-categories">
+                    <button class="category-button active" data-category="all">All Questions</button>
+                    <button class="category-button" data-category="about">About Us</button>
+                    <button class="category-button" data-category="membership">Membership</button>
+                    <button class="category-button" data-category="funding">Funding</button>
+                    <button class="category-button" data-category="events">Events</button>
+                </div>
+
+                <div class="faq-container">
+                    <!-- About Us Questions -->
+                    <div class="faq-item" data-category="about">
+                        <div class="faq-question">
+                            <h3>What exactly is Exotic Expenditures?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Exotic Expenditures is a social fund organized as an LLC that allows a group of friends to pool resources for extraordinary experiences. We're not a business in the traditional sense—we don't seek profits or have customers. Instead, we're a structure that helps our members collectively fund adventures they couldn't afford individually.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="about">
+                        <div class="faq-question">
+                            <h3>How did Exotic Expenditures start?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Exotic Expenditures began when a group of friends realized they shared dreams of extraordinary experiences but couldn't afford them individually. Rather than letting these dreams remain unrealized, we created a structure to combine our resources. We established the LLC to provide legal protection and a framework for managing our collective funds.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="about">
+                        <div class="faq-question">
+                            <h3>Is this a real business?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes and no. We are a legally registered LLC, but we operate as a social fund rather than a traditional business. We don't sell products or services, and we don't seek to make profits. Our purpose is to create a legal structure for friends to pool money for shared experiences. Think of us more as a club with a formal legal structure than a business.</p>
+                        </div>
+                    </div>
+
+                    <!-- Membership Questions -->
+                    <div class="faq-item" data-category="membership">
+                        <div class="faq-question">
+                            <h3>How can I join Exotic Expenditures?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Membership in Exotic Expenditures is typically by invitation, as we're a close-knit group of friends. However, we occasionally open to new members who share our values and vision. If you're interested, you can apply through our <a href="membership.html">membership page</a>, and current members will review applications based on compatibility with our existing group dynamic.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="membership">
+                        <div class="faq-question">
+                            <h3>What are the responsibilities of members?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Members contribute equally to our monthly fund and participate in decision-making about how we use our resources. Each member gets one vote in determining our expenditures, regardless of tenure. Members are expected to participate in at least 50% of events and contribute ideas for future adventures. The most important responsibility is maintaining a spirit of collaboration and respect.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="membership">
+                        <div class="faq-question">
+                            <h3>Can I leave the collective after joining?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, members can leave at any time with 30 days' notice. Our operating agreement outlines a fair process for this transition. Members who leave don't receive a refund of past contributions, as those funds have typically been spent on experiences. However, we do have provisions for distributing any accumulated assets if the collective were to dissolve completely.</p>
+                        </div>
+                    </div>
+
+                    <!-- Funding Questions -->
+                    <div class="faq-item" data-category="funding">
+                        <div class="faq-question">
+                            <h3>How much do members contribute?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Each member contributes $150 per month to our collective fund. This amount was determined based on what felt reasonable for our members while allowing us to accumulate enough for truly extraordinary experiences. For special adventures requiring additional funding, we occasionally vote on one-time extra contributions, but these are always optional.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="funding">
+                        <div class="faq-question">
+                            <h3>How are decisions made about spending the funds?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We operate on a democratic basis. Members propose ideas for experiences or expenditures, and we vote on them during our monthly meetings. Each member gets one equal vote, and we require a 70% majority for approval. For smaller experiences (under $1,000), a simple majority is sufficient. We maintain transparent records of all fund movements and decisions.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="funding">
+                        <div class="faq-question">
+                            <h3>What happens if I can't attend an event I helped fund?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We understand that not everyone can make every event. There's no refund for missed events, as the funding model is based on collective resources rather than individual purchases. However, we make efforts to plan events when most members can attend, and we typically plan a mix of larger and smaller activities throughout the year to maximize participation opportunities.</p>
+                        </div>
+                    </div>
+
+                    <!-- Events Questions -->
+                    <div class="faq-item" data-category="events">
+                        <div class="faq-question">
+                            <h3>What kinds of experiences does Exotic Expenditures fund?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We've funded a wide range of experiences, from helicopter camping trips to renting exotic sports cars for a weekend, from chartered sailing adventures to exclusive dining experiences with renowned chefs. We typically aim for experiences that would be prohibitively expensive for individuals but become accessible when costs are shared among our membership. We prioritize unique, memorable activities over material possessions.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="events">
+                        <div class="faq-question">
+                            <h3>How often do you organize events?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We typically organize 2-3 major experiences per year (those costing $5,000+) and 4-6 smaller events ($1,000-$3,000 range). This schedule allows us to accumulate sufficient funds for truly extraordinary experiences while still maintaining regular group activities. Events are planned approximately three months in advance to allow members to arrange their schedules.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="events">
+                        <div class="faq-question">
+                            <h3>Can I bring guests to events?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For most events, members can bring one guest by paying an additional guest fee determined by the cost of the experience. Some of our most expensive or limited-capacity experiences are members-only. We decide this on a case-by-case basis during the planning phase of each event. Guest policies are clearly communicated when events are announced.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="more-questions">
+            <div class="container">
+                <h2>Still have questions?</h2>
+                <p>We're happy to help with any other questions you might have about Exotic Expenditures.</p>
+                <a href="mailto:contact@exoticexpenditures.com" class="contact-button">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+                <p>&copy; 2025 Exotic Expenditures, LLC</p>
+                <p class="footer-tagline">Making memories, not profits</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-consent">
+        <div class="cookie-content">
+            <p><i class="fas fa-cookie-bite"></i> This website uses cookies to enhance your experience.</p>
+            <div class="cookie-buttons">
+                <button class="accept-cookies">Accept</button>
+                <button class="decline-cookies">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/faq.js"></script>
+</body>
+</html>

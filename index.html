@@ -3,102 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exotic Expenditures, LLC</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Exotic Expenditures, LLC - Shared Adventures & Extraordinary Experiences</title>
+    <meta name="description" content="Exotic Expenditures is a social fund that turns ordinary gatherings into extraordinary experiences. Join our collective for shared adventures and memorable experiences.">
+    <meta name="keywords" content="exotic expenditures, social fund, shared adventures, extraordinary experiences">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://exoticexpenditures.com/">
+    <meta property="og:title" content="Exotic Expenditures - Adventures Worth Sharing">
+    <meta property="og:description" content="Join our social fund for extraordinary experiences and adventures we couldn't experience alone.">
+    <meta property="og:image" content="https://exoticexpenditures.com/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://exoticexpenditures.com/">
+    <meta property="twitter:title" content="Exotic Expenditures - Adventures Worth Sharing">
+    <meta property="twitter:description" content="Join our social fund for extraordinary experiences and adventures we couldn't experience alone.">
+    <meta property="twitter:image" content="https://exoticexpenditures.com/assets/og-image.jpg">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/styles.min.css" as="style">
+    <link rel="preload" href="js/main.min.js" as="script">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="css/styles.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous" defer></script>
+    
+    <!-- Structured data for organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Exotic Expenditures, LLC",
+      "url": "https://exoticexpenditures.com",
+      "description": "A social fund that turns ordinary gatherings into extraordinary experiences",
+      "email": "contact@exoticexpenditures.com",
+      "sameAs": [
+        "https://www.instagram.com/exoticexpenditures",
+        "https://www.facebook.com/exoticexpenditures"
+      ]
+    }
+    </script>
+    
+    <!-- Structured data for FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is Exotic Expenditures?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Exotic Expenditures is a social fund that turns ordinary gatherings into extraordinary experiences. We're a crew of friends pooling resources to create adventures we couldn't experience alone."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How does the social fund work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We combine our funds to unlock experiences that would be out of reach individually, from exotic travel to thrilling local experiences, creating memories together with equal input and democratic decisions."
+        }
+      }]
+    }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'custom_map': {
+          'dimension1': 'adventure_category'
+        }
+      });
+    </script>
 </head>
 <body>
-    <div class="cursor"></div>
+    <div class="cursor" aria-hidden="true"></div>
     
-    <header>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">Exotic Expenditures</a>
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#what-we-do" class="nav-link">What We Do</a></li>
+                <li class="nav-item"><a href="#experiences" class="nav-link">Experiences</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="#calculators" class="nav-link">Planning</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header id="home" role="banner">
+        <div class="hero-slideshow">
+            <div class="hero-slide active" style="background-image: url('assets/images/adventure-1.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/adventure-2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/adventure-3.jpg');"></div>
+            <div class="hero-overlay"></div>
+        </div>
         <div class="hero-content">
             <h1 class="animated-title">Exotic Expenditures</h1>
             <p class="tagline">Adventures worth sharing</p>
             <div class="cta-container">
-                <a href="#about" class="cta-button">Discover More</a>
+                <a href="#about" class="cta-button" onclick="gtag('event', 'click', {'event_category': 'engagement', 'event_label': 'discover_more'})">Discover More</a>
             </div>
         </div>
-        <div class="hero-shapes">
+        <div class="hero-shapes" aria-hidden="true">
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
             <div class="shape shape-3"></div>
         </div>
     </header>
 
-    <main>
-        <section id="about" class="about">
+    <main id="main-content">
+        <section id="about" class="about section" aria-labelledby="about-heading">
             <div class="container">
-                <div class="section-heading">
-                    <span class="section-icon"><i class="fas fa-users"></i></span>
-                    <h2>About Our Collective</h2>
+                <div class="section-heading fade-in">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-users"></i></span>
+                    <h2 id="about-heading">About Our Collective</h2>
                 </div>
-                <div class="about-content">
+                <div class="about-content fade-in">
                     <p>Exotic Expenditures is a social fund that turns ordinary gatherings into extraordinary experiences. We're not your typical LLC — we're a crew of friends pooling resources to create adventures we couldn't experience alone.</p>
                     <p>No profit motives. No corporate agenda. Just a simple way to manage our collective funds for maximum enjoyment.</p>
                 </div>
-                <div class="fun-fact">
+                <div class="fun-fact scale-in">
                     <span class="fact-label">Fun Fact</span>
                     <p>Our most exotic expenditure to date was a weekend helicopter camping trip to a remote mountain peak!</p>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-item fade-in">
+                        <div class="stat-value" data-value="12">0</div>
+                        <div class="stat-label">Adventures Completed</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-value" data-value="8">0</div>
+                        <div class="stat-label">Countries Visited</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-value" data-value="24">0</div>
+                        <div class="stat-label">Members & Friends</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="purpose">
+        <section id="what-we-do" class="purpose section" aria-labelledby="purpose-heading">
             <div class="container">
-                <div class="section-heading">
-                    <span class="section-icon"><i class="fas fa-compass"></i></span>
-                    <h2>What We're About</h2>
+                <div class="section-heading fade-in">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-compass"></i></span>
+                    <h2 id="purpose-heading">What We Do</h2>
                 </div>
                 <div class="cards-container">
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-piggy-bank"></i></div>
+                    <div class="card slide-in-left">
+                        <div class="card-icon" aria-hidden="true"><i class="fas fa-piggy-bank"></i></div>
                         <h3>Pooled Resources</h3>
                         <p>We combine our funds to unlock experiences that would be out of reach individually.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
+                    <div class="card fade-in">
+                        <div class="card-icon" aria-hidden="true"><i class="fas fa-globe-americas"></i></div>
                         <h3>Shared Adventures</h3>
                         <p>From exotic travel to thrilling local experiences, we're creating memories together.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="card slide-in-right">
+                        <div class="card-icon" aria-hidden="true"><i class="fas fa-handshake"></i></div>
                         <h3>Community Spirit</h3>
                         <p>Equal input, democratic decisions, and shared responsibility for amazing outcomes.</p>
                     </div>
                 </div>
+                
+                <div class="infographic fade-in">
+                    <h3 class="infographic-title">How Our Fund Works</h3>
+                    <div class="infographic-steps">
+                        <div class="info-step">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Members Contribute</div>
+                            <div class="step-desc">Equal monthly contributions to our shared fund</div>
+                        </div>
+                        <div class="info-step">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Vote on Adventures</div>
+                            <div class="step-desc">Democratic selection of experiences</div>
+                        </div>
+                        <div class="info-step">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Experience Together</div>
+                            <div class="step-desc">Share extraordinary moments as a group</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experiences" class="experiences section" aria-labelledby="experiences-heading">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-star"></i></span>
+                    <h2 id="experiences-heading">Our Experiences</h2>
+                </div>
+                <div class="experience-content">
+                    <p class="text-center">Check back soon for our upcoming and past adventures!</p>
+                    <div class="placeholder-content" aria-hidden="true">
+                        <i class="fas fa-camera placeholder-icon"></i>
+                        <p>Experience content coming soon</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="gallery section" aria-labelledby="gallery-heading">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-images"></i></span>
+                    <h2 id="gallery-heading">Gallery</h2>
+                </div>
+                <div class="gallery-content">
+                    <p class="text-center">Our memories gallery is coming soon!</p>
+                    <div class="placeholder-content" aria-hidden="true">
+                        <i class="fas fa-image placeholder-icon"></i>
+                        <p>Gallery content coming soon</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="join-us">
+        <section id="contact" class="join-us section" aria-labelledby="contact-heading">
             <div class="container">
                 <div class="section-heading">
-                    <span class="section-icon"><i class="fas fa-paper-plane"></i></span>
-                    <h2>Get In Touch</h2>
+                    <span class="section-icon" aria-hidden="true"><i class="fas fa-paper-plane"></i></span>
+                    <h2 id="contact-heading">Get In Touch</h2>
                 </div>
                 <p class="join-text">Curious about how we operate or interested in starting your own social fund?</p>
-                <a href="mailto:contact@exoticexpenditures.com" class="contact-button">
-                    <i class="fas fa-envelope"></i> Drop Us a Line
+                <a href="mailto:contact@exoticexpenditures.com" class="contact-button" onclick="gtag('event', 'click', {'event_category': 'engagement', 'event_label': 'email_contact'})">
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Drop Us a Line
                 </a>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <p>&copy; 2025 Exotic Expenditures, LLC</p>
                 <p class="footer-tagline">Making memories, not profits</p>
                 <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram" onclick="gtag('event', 'social_click', {'adventure_category': 'social', 'event_label': 'instagram'})"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook" onclick="gtag('event', 'social_click', {'adventure_category': 'social', 'event_label': 'facebook'})"><i class="fab fa-facebook" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.min.js" defer></script>
+    <script src="js/accessibility.js" defer></script>
 </body>
 </html>
