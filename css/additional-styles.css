@@ -1181,6 +1181,199 @@
     box-shadow: var(--shadow);
 }
 
+/* Multi-step form styles */
+.multi-step-form {
+    position: relative;
+}
+
+.form-progress {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--gradient-1);
+    width: 0;
+    transition: width 0.5s ease;
+}
+
+.step-indicators {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.step-label {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active .step-number {
+    background: var(--gradient-1);
+    border-color: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.step-indicator.active .step-label {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.step-indicator.completed .step-number {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.form-step {
+    display: none;
+    width: 100%;
+}
+
+.form-step.active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-title {
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+}
+
+.step-description {
+    width: 100%;
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.interest-selection {
+    width: 100%;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.interest-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.interest-checkbox input {
+    width: 18px;
+    height: 18px;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.prev-button, 
+.next-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.next-button {
+    background: var(--gradient-1);
+    color: white;
+    margin-left: auto;
+}
+
+.prev-button {
+    background: #f0f0f0;
+    color: var(--dark);
+    border: 1px solid #ddd;
+}
+
+.next-button:hover,
+.prev-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-checklist {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.error-message {
+    color: var(--primary);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
 .form-group {
     flex: 1 1 calc(50% - 20px);
     margin-bottom: 25px;
