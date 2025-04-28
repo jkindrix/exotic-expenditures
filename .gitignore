@@ -28,8 +28,3 @@ node_modules/
 
 # Agent-related files
 .agents/
-agent-prompts/
-agent-work/
-dependencies.md
-WORK-DISTRIBUTION.md
-WEBSITE-ENHANCEMENT-CHECKLIST.md

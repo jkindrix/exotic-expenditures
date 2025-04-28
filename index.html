@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exotic Expenditures, LLC - Shared Adventures & Extraordinary Experiences</title>
-    <meta name="description" content="Exotic Expenditures is a social fund that turns ordinary gatherings into extraordinary experiences. Join our collective for shared adventures and memorable experiences.">
+    <meta name="description" content="We coordinate recurring ACH contributions from known group members into a pooled fund used for shared event expenses like meals, decorations, and celebrations. No products or services are sold. Join our collective for shared adventures.">
     <meta name="keywords" content="exotic expenditures, social fund, shared adventures, extraordinary experiences">
     
     <!-- Open Graph / Facebook -->
@@ -39,6 +39,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/visual-enhancements.css">
+    <link rel="stylesheet" href="css/visual-effects.css">
+    <link rel="stylesheet" href="css/visual-loading.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous" defer></script>
     
@@ -49,7 +53,7 @@
       "@type": "Organization",
       "name": "Exotic Expenditures, LLC",
       "url": "https://exoticexpenditures.com",
-      "description": "A social fund that turns ordinary gatherings into extraordinary experiences",
+      "description": "We coordinate recurring ACH contributions from known group members into a pooled fund used for shared event expenses like meals, decorations, and celebrations. No products or services are sold.",
       "email": "contact@exoticexpenditures.com",
       "sameAs": [
         "https://www.instagram.com/exoticexpenditures",
@@ -82,12 +86,12 @@
     </script>
     
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWYYZ53P7E"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
+      gtag('config', 'G-ZWYYZ53P7E', {
         'anonymize_ip': true,
         'custom_map': {
           'dimension1': 'adventure_category'
@@ -115,17 +119,33 @@
     
     <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main navigation">
         <div class="container nav-container">
-            <a href="#" class="nav-logo">Exotic Expenditures</a>
+            <a href="#" class="nav-logo"><img src="assets/images/logos/exotic-expenditures-logo.png" alt="Exotic Expenditures Logo" width="40" height="40"> Exotic Expenditures</a>
             <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#what-we-do" class="nav-link">What We Do</a></li>
-                <li class="nav-item"><a href="#experiences" class="nav-link">Experiences</a></li>
-                <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li class="nav-item"><a href="#calculators" class="nav-link">Planning</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        Explore <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-label="Explore submenu">
+                        <a href="#what-we-do" class="dropdown-item">What We Do</a>
+                        <a href="#experiences" class="dropdown-item">Experiences</a>
+                        <a href="#gallery" class="dropdown-item">Gallery</a>
+                    </div>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        Resources <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-label="Resources submenu">
+                        <a href="#calculators" class="dropdown-item">Planning Tools</a>
+                        <a href="membership.html" class="dropdown-item">Membership</a>
+                        <a href="faq.html" class="dropdown-item">FAQ</a>
+                    </div>
+                </li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 <li class="nav-item nav-search">
                     <button class="search-toggle" id="search-toggle" aria-label="Toggle search">
@@ -157,8 +177,8 @@
             <div class="hero-particle" aria-hidden="true"></div>
         </div>
         <div class="hero-content">
-            <h1 class="animated-title" data-text="Exotic Expenditures">Exotic Expenditures</h1>
-            <p class="tagline">Adventures worth sharing</p>
+            <h1 class="animated-title reveal-text" data-text="Exotic Expenditures">Exotic Expenditures</h1>
+            <p class="tagline" data-text-effect="gradient">Adventures worth sharing</p>
             <div class="cta-container">
                 <a href="#about" class="cta-button" onclick="gtag('event', 'click', {'event_category': 'engagement', 'event_label': 'discover_more'})">
                     <span>Discover More</span>
@@ -181,10 +201,10 @@
                     <h2 id="about-heading">About Our Collective</h2>
                 </div>
                 <div class="about-content fade-in">
-                    <p>Exotic Expenditures is a social fund that turns ordinary gatherings into extraordinary experiences. We're not your typical LLC — we're a crew of friends pooling resources to create adventures we couldn't experience alone.</p>
+                    <p>We coordinate recurring ACH contributions from known group members into a pooled fund used for shared event expenses like meals, decorations, and celebrations. No products or services are sold. This supports non-commercial fund stewardship and accountability through a registered LLC.</p>
                     <p>No profit motives. No corporate agenda. Just a simple way to manage our collective funds for maximum enjoyment.</p>
                 </div>
-                <div class="fun-fact scale-in">
+                <div class="fun-fact scale-in glass-card" data-glass="light">
                     <span class="fact-label">Fun Fact</span>
                     <p>Our most exotic expenditure to date was a weekend helicopter camping trip to a remote mountain peak!</p>
                 </div>
@@ -209,7 +229,7 @@
             </div>
         </section>
 
-        <section id="what-we-do" class="purpose section" aria-labelledby="purpose-heading">
+        <section id="what-we-do" class="purpose section" aria-labelledby="purpose-heading" data-texture="dots">
             <div class="container">
                 <div class="section-heading fade-in">
                     <span class="section-icon" aria-hidden="true"><i class="fas fa-compass"></i></span>
@@ -256,7 +276,7 @@
             </div>
         </section>
         
-        <section id="experiences" class="experiences section" aria-labelledby="experiences-heading">
+        <section id="experiences" class="experiences section" aria-labelledby="experiences-heading" data-divider="wave">
             <div class="container">
                 <div class="section-heading fade-in">
                     <span class="section-icon" aria-hidden="true"><i class="fas fa-star"></i></span>
@@ -301,7 +321,7 @@
                     </div>
                     <div class="adventure-item fade-in" data-category="food">
                         <div class="adventure-img">
-                            <img src="https://images.unsplash.com/photo-1563599175592-c58dc214deff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Private Chef Experience">
+                            <img src="https://images.unsplash.com/photo-1563599175592-c58dc214deff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Elegantly plated gourmet meal prepared by a Michelin star chef with wine pairing">
                             <div class="adventure-overlay">
                                 <span class="adventure-date">February 2024</span>
                                 <h3>Michelin Star Chef Dinner</h3>
@@ -312,7 +332,7 @@
                     </div>
                     <div class="adventure-item fade-in" data-category="travel">
                         <div class="adventure-img">
-                            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Private Island Getaway">
+                            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Aerial view of a private tropical island with white sand beaches and clear turquoise water">
                             <div class="adventure-overlay">
                                 <span class="adventure-date">December 2023</span>
                                 <h3>Private Island Getaway</h3>
@@ -323,7 +343,7 @@
                     </div>
                     <div class="adventure-item fade-in" data-category="experience">
                         <div class="adventure-img">
-                            <img src="https://images.unsplash.com/photo-1672495630169-7c58f9471d8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Formula 1 Driving Experience">
+                            <img src="https://images.unsplash.com/photo-1672495630169-7c58f9471d8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Professional Formula 1 race car speeding around a track with driver in racing gear">
                             <div class="adventure-overlay">
                                 <span class="adventure-date">October 2023</span>
                                 <h3>Formula 1 Driving Experience</h3>
@@ -334,7 +354,7 @@
                     </div>
                     <div class="adventure-item fade-in" data-category="food">
                         <div class="adventure-img">
-                            <img src="https://images.unsplash.com/photo-1615887588189-bacee4f8a033?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wine Tasting Tour">
+                            <img src="https://images.unsplash.com/photo-1615887588189-bacee4f8a033?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Private wine cellar in a French vineyard with rows of oak barrels and hanging glasses">
                             <div class="adventure-overlay">
                                 <span class="adventure-date">September 2023</span>
                                 <h3>Private Winery Tour</h3>
@@ -349,7 +369,8 @@
                 <div class="adventure-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
                     <div class="lightbox-content">
                         <button class="close-lightbox" aria-label="Close details">&times;</button>
-                        <div class="lightbox-details">
+                        <h2 id="lightbox-title" class="lightbox-title">Adventure Details</h2>
+                        <div class="lightbox-details" tabindex="-1">
                             <!-- Content will be added dynamically -->
                         </div>
                     </div>
@@ -474,17 +495,20 @@
                 </div>
                 
                 <!-- Gallery Lightbox -->
-                <div class="gallery-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
+                <div class="gallery-lightbox" role="dialog" aria-modal="true" aria-labelledby="gallery-lightbox-title" aria-hidden="true">
                     <div class="lightbox-content">
                         <button class="close-lightbox" aria-label="Close lightbox">&times;</button>
-                        <div class="lightbox-image">
+                        <h2 id="gallery-lightbox-title" class="sr-only">Adventure Gallery Image</h2>
+                        <div class="lightbox-image" tabindex="-1">
                             <!-- Image will be inserted dynamically -->
                         </div>
-                        <div class="lightbox-caption">
+                        <div class="lightbox-caption" aria-live="polite">
                             <!-- Caption will be inserted dynamically -->
                         </div>
-                        <button class="lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
-                        <button class="lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                        <div class="lightbox-navigation" role="navigation" aria-label="Gallery navigation">
+                            <button class="lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                            <button class="lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -581,40 +605,43 @@
                 <div class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-heading" aria-hidden="true">
                     <div class="rsvp-modal-content">
                         <button class="close-rsvp" aria-label="Close RSVP form">&times;</button>
-                        <h3 id="rsvp-heading">Reserve Your Spot</h3>
-                        <form id="rsvp-form">
+                        <h2 id="rsvp-heading">Reserve Your Spot</h2>
+                        <p id="rsvp-description" class="rsvp-description">Please fill out the form below to reserve your spot for this adventure.</p>
+                        <form id="rsvp-form" aria-describedby="rsvp-description" novalidate>
                             <input type="hidden" id="event-id" name="event-id">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" required>
-                                <span class="error-message" aria-live="polite"></span>
+                                <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+                                <span id="name-error" class="error-message" aria-live="assertive"></span>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                                <span class="error-message" aria-live="polite"></span>
+                                <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+                                <span id="email-error" class="error-message" aria-live="assertive"></span>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" required>
-                                <span class="error-message" aria-live="polite"></span>
+                                <input type="tel" id="phone" name="phone" required aria-required="true" aria-describedby="phone-error">
+                                <span id="phone-error" class="error-message" aria-live="assertive"></span>
                             </div>
                             <div class="form-group">
                                 <label for="guests">Number of Guests</label>
-                                <select id="guests" name="guests">
+                                <select id="guests" name="guests" aria-describedby="guests-error">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                 </select>
-                                <span class="error-message" aria-live="polite"></span>
+                                <span id="guests-error" class="error-message" aria-live="assertive"></span>
                             </div>
                             <div class="form-group">
                                 <label for="special-requests">Special Requests</label>
-                                <textarea id="special-requests" name="special-requests"></textarea>
-                                <span class="error-message" aria-live="polite"></span>
+                                <textarea id="special-requests" name="special-requests" aria-describedby="special-requests-error"></textarea>
+                                <span id="special-requests-error" class="error-message" aria-live="assertive"></span>
                             </div>
-                            <button type="submit" class="submit-rsvp">Confirm Reservation</button>
+                            <div class="form-actions">
+                                <button type="submit" class="submit-rsvp">Confirm Reservation</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -755,9 +782,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="group-size">Group Size</label>
-                                            <input type="range" id="group-size" min="1" max="20" value="8" 
-                                                  oninput="this.nextElementSibling.value = this.value">
-                                            <output>8</output>
+                                            <div class="range-container">
+                                                <input type="range" id="group-size" min="1" max="20" value="8" 
+                                                      aria-valuemin="1" aria-valuemax="20" aria-valuenow="8"
+                                                      oninput="document.getElementById('group-size-display').textContent = this.value; this.setAttribute('aria-valuenow', this.value);">
+                                                <span id="group-size-display" aria-live="polite">8</span>
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -1091,18 +1121,22 @@
         </div>
     </footer>
 
-    <div class="cookie-consent">
+    <div class="cookie-consent" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description" aria-hidden="true">
         <div class="cookie-content">
-            <p><i class="fas fa-cookie-bite"></i> This website uses cookies to enhance your experience.</p>
+            <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
+            <p id="cookie-description"><i class="fas fa-cookie-bite" aria-hidden="true"></i> This website uses cookies to enhance your experience.</p>
             <div class="cookie-buttons">
-                <button class="accept-cookies">Accept</button>
-                <button class="decline-cookies">Decline</button>
+                <button class="accept-cookies" aria-label="Accept cookies">Accept</button>
+                <button class="decline-cookies" aria-label="Decline cookies">Decline</button>
             </div>
         </div>
     </div>
 
+    <script src="js/fixes.js"></script>
     <script src="js/bundle.min.js" defer></script>
     <script src="js/visual-animations.js" defer></script>
+    <script src="js/visual-effects.js" defer></script>
+    <script src="js/visual-loading.js" defer></script>
     <script src="js/gallery.js" defer></script>
 </body>
 </html>
