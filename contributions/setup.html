@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Contribution - Exotic Expenditures, LLC</title>
+    <link rel="preload" href="../js/bundle.min.js" as="script">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/additional-styles.css">
+    <link rel="stylesheet" href="../css/contributions.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3b73127dcf.js" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+</head>
+<body>
+    <div class="cursor" aria-hidden="true"></div>
+    
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="page-header">
+        <div class="container">
+            <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main navigation">
+                <div class="nav-container">
+                    <a href="../index.html" class="nav-logo"><img src="../assets/images/logos/exotic-expenditures-logo.png" alt="Exotic Expenditures Logo" width="40" height="40"> Exotic Expenditures</a>
+                    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="../index.html#about" class="nav-link">About</a></li>
+                        <li class="nav-item has-dropdown">
+                            <a href="javascript:void(0);" class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                                Explore <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-label="Explore submenu">
+                                <a href="../index.html#what-we-do" class="dropdown-item">What We Do</a>
+                                <a href="../index.html#experiences" class="dropdown-item">Experiences</a>
+                                <a href="../index.html#gallery" class="dropdown-item">Gallery</a>
+                            </div>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a href="javascript:void(0);" class="nav-link dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+                                Resources <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-label="Resources submenu">
+                                <a href="../index.html#calculators" class="dropdown-item">Planning Tools</a>
+                                <a href="../membership.html" class="dropdown-item">Membership</a>
+                                <a href="../faq.html" class="dropdown-item">FAQ</a>
+                                <a href="./setup.html" class="dropdown-item active">Contributions</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                        <li class="nav-item nav-search">
+                            <button class="search-toggle" id="search-toggle" aria-label="Toggle search">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </button>
+                            <div class="search-form" id="search-form">
+                                <input type="text" id="siteSearch" placeholder="Search website..." aria-label="Search website">
+                                <button type="submit" aria-label="Submit search">
+                                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="breadcrumbs">
+            <div class="container">
+                <ul class="breadcrumb-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../membership.html">Membership</a></li>
+                    <li class="active">Contribution Setup</li>
+                </ul>
+            </div>
+        </div>
+        
+        <section class="contribution-hero">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-icon"><i class="fas fa-credit-card"></i></span>
+                    <h1>Setup Your Contributions</h1>
+                    <p class="subtitle">Automate your monthly contributions to our collective adventures</p>
+                </div>
+                <div class="hero-decoration">
+                    <div class="decoration-element element-1"></div>
+                    <div class="decoration-element element-2"></div>
+                    <div class="decoration-element element-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-intro">
+            <div class="container">
+                <div class="intro-content">
+                    <h2>Automatic Contributions Made Simple</h2>
+                    <p>Setting up recurring contributions helps our collective plan better adventures by ensuring consistent funding. Your contributions are securely processed through Stripe using ACH bank transfers for lower fees and greater efficiency.</p>
+                    <div class="benefit-cards">
+                        <div class="benefit-card">
+                            <i class="fas fa-lock"></i>
+                            <h3>Secure</h3>
+                            <p>Bank-level security with Plaid and Stripe for safe payments</p>
+                        </div>
+                        <div class="benefit-card">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <h3>Convenient</h3>
+                            <p>No more manual payments or remembering due dates</p>
+                        </div>
+                        <div class="benefit-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Trackable</h3>
+                            <p>Complete history of your contributions for transparency</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contribution-setup">
+            <div class="container">
+                <div class="setup-form-container">
+                    <form id="contribution-setup-form" class="multi-step-form">
+                        <div class="form-progress">
+                            <div class="progress-bar">
+                                <div class="progress-indicator" id="progressIndicator"></div>
+                            </div>
+                            <div class="step-indicators">
+                                <div class="step-indicator active" data-step="1">
+                                    <span class="step-number">1</span>
+                                    <span class="step-label">Bank Connection</span>
+                                </div>
+                                <div class="step-indicator" data-step="2">
+                                    <span class="step-number">2</span>
+                                    <span class="step-label">Contribution Details</span>
+                                </div>
+                                <div class="step-indicator" data-step="3">
+                                    <span class="step-number">3</span>
+                                    <span class="step-label">Review & Confirm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 1: Connect Bank Account -->
+                        <div class="form-step active" id="step1">
+                            <h3 class="step-title">Connect Your Bank Account</h3>
+                            <p class="step-description">First, let's securely connect your bank account using Plaid. We never store your login credentials and use industry-standard security.</p>
+                            
+                            <div class="bank-connection-container">
+                                <div id="connected-accounts" class="connected-accounts hidden">
+                                    <h4>Connected Account</h4>
+                                    <div class="account-details">
+                                        <div class="account-icon">
+                                            <i class="fas fa-university"></i>
+                                        </div>
+                                        <div class="account-info">
+                                            <p class="account-name">Bank account name will appear here</p>
+                                            <p class="account-number">••••<span id="last-four">0000</span></p>
+                                        </div>
+                                        <button type="button" id="change-account" class="text-button">
+                                            <i class="fas fa-exchange-alt"></i> Change
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div id="connect-account" class="connect-account">
+                                    <p>Connect your bank account securely using Plaid. Your login credentials are never stored.</p>
+                                    <div class="connect-button-container">
+                                        <button type="button" id="plaid-link-button" class="plaid-button">
+                                            <i class="fas fa-link"></i> Connect Bank Account
+                                        </button>
+                                    </div>
+                                    <div class="security-note">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <p>Your banking information is secure with industry-standard encryption and is never stored on our servers.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" id="next-to-step2" class="next-button" disabled>Continue <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Contribution Details -->
+                        <div class="form-step" id="step2">
+                            <h3 class="step-title">Set Contribution Details</h3>
+                            <p class="step-description">Choose your contribution amount and frequency. The standard monthly contribution for members is $150.</p>
+                            
+                            <div class="form-group">
+                                <label for="contribution-amount">Monthly Contribution Amount</label>
+                                <div class="amount-input-container">
+                                    <span class="currency-symbol">$</span>
+                                    <input type="number" id="contribution-amount" name="contribution-amount" min="150" value="150" required>
+                                </div>
+                                <span class="help-text">Minimum contribution is $150/month for standard membership</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contribution-frequency">Contribution Frequency</label>
+                                <select id="contribution-frequency" name="contribution-frequency" required>
+                                    <option value="monthly" selected>Monthly</option>
+                                    <option value="biweekly">Bi-weekly</option>
+                                </select>
+                                <span class="help-text">Monthly is recommended for standard membership</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="start-date">First Contribution Date</label>
+                                <input type="date" id="start-date" name="start-date" required>
+                                <span class="help-text">Choose when your first contribution should process</span>
+                            </div>
+
+                            <div class="contribution-preview">
+                                <h4>Contribution Schedule Preview</h4>
+                                <div class="preview-container" id="schedule-preview">
+                                    <p>Your schedule will appear here after selecting your preferences.</p>
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="prev-button"><i class="fas fa-arrow-left"></i> Back</button>
+                                <button type="button" id="next-to-step3" class="next-button">Continue <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Review and Confirm -->
+                        <div class="form-step" id="step3">
+                            <h3 class="step-title">Review & Confirm</h3>
+                            <p class="step-description">Please review your contribution details before confirming.</p>
+                            
+                            <div class="review-summary">
+                                <div class="summary-section">
+                                    <h4>Bank Account</h4>
+                                    <div class="summary-content" id="bank-summary">
+                                        <p>Account information will appear here</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="summary-section">
+                                    <h4>Contribution Details</h4>
+                                    <div class="summary-content" id="contribution-summary">
+                                        <div class="summary-row">
+                                            <span class="summary-label">Amount:</span>
+                                            <span class="summary-value" id="summary-amount">$150.00</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Frequency:</span>
+                                            <span class="summary-value" id="summary-frequency">Monthly</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">First payment:</span>
+                                            <span class="summary-value" id="summary-first-date">July 1, 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="terms-agreement">
+                                <div class="form-group form-checkbox">
+                                    <input type="checkbox" id="terms-acceptance" name="terms-acceptance" required>
+                                    <label for="terms-acceptance">I authorize Exotic Expenditures, LLC to debit my account according to the schedule above. I understand this authorization will remain in effect until I cancel it.</label>
+                                </div>
+                            </div>
+
+                            <div class="form-privacy-note">
+                                <p>By setting up recurring contributions, you agree to our <a href="../privacy.html">Privacy Policy</a> and <a href="../terms.html">Terms of Service</a>. You can modify or cancel your contributions at any time from your member dashboard.</p>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="prev-button"><i class="fas fa-arrow-left"></i> Back</button>
+                                <button type="submit" id="confirm-setup" class="submit-button">Confirm Setup</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success confirmation (hidden until needed) -->
+        <section class="setup-confirmation" id="setup-confirmation" style="display: none;">
+            <div class="container">
+                <div class="confirmation-content">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Contribution Setup Complete!</h2>
+                    <p>Your recurring contribution has been successfully set up.</p>
+                    
+                    <div class="confirmation-details">
+                        <div class="confirmation-detail-row">
+                            <span class="detail-label">Amount:</span>
+                            <span class="detail-value" id="conf-amount">$150.00</span>
+                        </div>
+                        <div class="confirmation-detail-row">
+                            <span class="detail-label">Frequency:</span>
+                            <span class="detail-value" id="conf-frequency">Monthly</span>
+                        </div>
+                        <div class="confirmation-detail-row">
+                            <span class="detail-label">First payment:</span>
+                            <span class="detail-value" id="conf-first-date">July 1, 2025</span>
+                        </div>
+                    </div>
+                    
+                    <p>You will receive a confirmation email shortly with these details. You can manage your contributions at any time from your member dashboard.</p>
+                    
+                    <div class="confirmation-actions">
+                        <a href="./manage.html" class="cta-button">View Your Dashboard</a>
+                        <a href="../index.html" class="text-button">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="additional-info">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How are my bank details protected?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We use Plaid to securely connect to your bank. Your login credentials are never stored on our servers. All bank account information is tokenized through Stripe's secure platform and transmitted using TLS encryption.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I change my contribution amount later?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can change your contribution amount at any time through your member dashboard. Changes will take effect on the next scheduled payment date.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I cancel automatic contributions?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can cancel your automatic contributions at any time by visiting the "Manage Contributions" section of your member dashboard. Please note that cancellations must be made at least 3 business days before your next scheduled payment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Are there any fees for ACH contributions?</h3>
+                            <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, Exotic Expenditures covers all processing fees for ACH contributions. 100% of your contribution goes directly to our collective adventure fund.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                </div>
+                <p>&copy; 2025 Exotic Expenditures, LLC</p>
+                <p class="footer-tagline">Making memories, not profits</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Instagram" onclick="gtag('event', 'social_click', {'adventure_category': 'social', 'event_label': 'instagram'})"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook" onclick="gtag('event', 'social_click', {'adventure_category': 'social', 'event_label': 'facebook'})"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-consent">
+        <div class="cookie-content">
+            <p><i class="fas fa-cookie-bite"></i> This website uses cookies to enhance your experience.</p>
+            <div class="cookie-buttons">
+                <button class="accept-cookies">Accept</button>
+                <button class="decline-cookies">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/bundle.min.js" defer></script>
+    <script src="../js/contributions.js" defer></script>
+</body>
+</html>
