@@ -1,0 +1,205 @@
+/* Visual Loading Animations - Agent 5 */
+
+/* ===== PAGE LOADING EFFECTS ===== */
+
+/* Initial page load animation */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.7s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.7s ease;
+}
+
+.page-transition.loaded {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+.loading-logo {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-logo::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    animation: pulse-logo 2s infinite;
+}
+
+.loading-logo::after {
+    content: 'EE';
+    color: var(--light);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse-logo {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.loading-bar {
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.loading-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: var(--gradient-2);
+    transition: width 0.3s ease;
+}
+
+/* Skeleton loading state for content */
+.skeleton-loading {
+    position: relative;
+    background: var(--light-3);
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+.skeleton-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    animation: skeleton-sweep 1.5s infinite;
+}
+
+@keyframes skeleton-sweep {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.skeleton-text {
+    height: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.skeleton-text:last-child {
+    width: 80%;
+}
+
+.skeleton-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.skeleton-card {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 200px;
+}
+
+/* ===== LAZY LOADING IMAGES ===== */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+.lazy-load-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: var(--light-3);
+}
+
+.lazy-load-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    animation: skeleton-sweep 1.5s infinite;
+    z-index: 1;
+}
+
+.lazy-load-wrapper.loaded::before {
+    display: none;
+}
+
+/* ===== SMOOTH SECTION TRANSITIONS ===== */
+section {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.section-entering {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+section.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== PREFERS REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    .page-transition,
+    .page-transition.loaded,
+    .lazy-image,
+    section,
+    .skeleton-loading::after {
+        transition: opacity 0.1s linear;
+        animation: none !important;
+        transform: none !important;
+    }
+}
