@@ -36,15 +36,27 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 
 /* Better color contrast */
 .primary {
-    background-color: #E01F54; /* Darkened for better contrast */
+    background-color: #D9184D; /* Further darkened for better contrast */
 }
 
 .secondary {
-    background-color: #0099CC; /* Darkened for better contrast */
+    background-color: #0074B3; /* Further darkened for better contrast */
 }
 
 .accent {
-    background-color: #EFC050; /* Darkened for better contrast */
+    background-color: #CC9E22; /* Further darkened for better contrast */
+}
+
+/* Fix Fun Fact section contrast issues */
+.fun-fact {
+    color: #000000; /* Ensure high contrast text */
+    background: rgba(255, 51, 102, 0.15); /* Increased opacity for better contrast */
+    border: 1px solid rgba(255, 51, 102, 0.3); /* Added border for definition */
+}
+
+.fun-fact p {
+    color: #222222; /* Dark text for high contrast */
+    font-weight: 500; /* Slightly bolder for better readability */
 }
 
 /* Ensure text over gradients has sufficient contrast */
@@ -96,6 +108,22 @@ main a:not(.btn):not(.nav-link):not(.cta-button):not(.contact-button):not(.socia
 /* ARIA-hidden elements should not be focusable */
 [aria-hidden="true"] {
     visibility: hidden;
+    pointer-events: none;
+}
+
+/* Visually hidden elements that should remain in the accessibility tree */
+.visually-hidden {
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+    pointer-events: none;
 }
 
 /* Screen reader only text */
